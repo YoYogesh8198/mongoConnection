@@ -15,13 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $filter = ['uniqueId' => $uniqueId];
     $options = [];
     $query = new MongoDB\Driver\Query($filter, $options);
-    $rows = $client->executeQuery('Tables.details', $query); // $mongo contains the connection object to MongoDB
-
-    $check = 0;
-    foreach ($rows as $r) {
-        $check = 1;
-    }
-    if ($check == 0) {
+    $rows = $client->executeQuery('Tables.details', $query); 
+    
+    if (count($rows->toArray()) == 0) {
         $insert = new MongoDB\Driver\BulkWrite;
         $insert->insert(['uniqueId' => $uniqueId, 'name' => $name, 'email' => $email, 'phone' => $phone, 'traveler' => $traveler, 'regions' => $regions, 'cruise_menu' => $cruise_menu, 'departure_port' => $departure_port, 'cruise_ship' => $cruise_ship, 'total_night' => $total_night, "visit_place" => $visit_place]);
         $client->executeBulkWrite('Tables.details', $insert);
