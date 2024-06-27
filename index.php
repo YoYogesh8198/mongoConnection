@@ -1,3 +1,13 @@
+<?php include 'db.php';
+if (isset($_POST)) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+}
+$insert = new MongoDB\Driver\BulkWrite;
+$insert->insert(['name' => $name, 'email' => $email, 'phone' => $phone]);
+$client->executeBulkWrite('Tables.details', $insert);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +29,37 @@
 <body>
     <?php include 'db.php'; ?>
     <div class="container">
+
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <h1>Input Data</h1>
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                    <input class="form-control form-control-lg" type="text" name="name" placeholder="Name"
+                        aria-label=".form-control-lg example">
+                </div>
+
+                <div class="col-sm-4">
+                    <input class="form-control form-control-lg" type="text" name="email" placeholder="Email"
+                        aria-label=".form-control-lg example">
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                    <input class="form-control form-control-lg" type="text" name="phone" placeholder="Phone"
+                        aria-label=".form-control-lg example">
+                </div>
+
+                <div class="col-sm-3">
+                    <select class="form-select-lg mb-3 w-100" aria-label="small select example">
+                        <option selected class="">Traverler</option>
+                        <option>choose Travelers</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="submit" class="btn btn-primary btn-lg">
+        </form>
 
         <h1>Collection Data</h1>
         <div class="mb-3 row">
@@ -50,7 +91,7 @@
             </div>
         </div>
         <div class="mb-3 row">
-        <div class="col-sm-4">
+            <div class="col-sm-4">
                 <select class="form-select-lg mb-3 w-75" aria-label="small select example">
                     <option selected class="">cruise ships</option>
                     <?php foreach ($cruiseShipData as $shipData): ?>
@@ -60,11 +101,11 @@
             </div>
 
             <div class="col-sm-4"">
-                <select class="form-select-lg mb-3 w-75" aria-label="small select example">
-                    <option selected>Total Nights stay</option>
-                    <?php foreach ($nightsData as $nightData): ?>
-                        <option value="<?php echo $nightData; ?>"><?php echo $nightData; ?></option>
-                    <?php endforeach; ?>
+                <select class=" form-select-lg mb-3 w-75" aria-label="small select example">
+                <option selected>Total Nights stay</option>
+                <?php foreach ($nightsData as $nightData): ?>
+                    <option value="<?php echo $nightData; ?>"><?php echo $nightData; ?></option>
+                <?php endforeach; ?>
                 </select>
             </div>
 
@@ -78,36 +119,13 @@
             </div>
         </div>
 
-        <h1>Input Data</h1>
-        <div class="mb-3 row">
-            <div class="col-sm-4">
-                <input class="form-control form-control-lg" type="text" placeholder="Name"
-                    aria-label=".form-control-lg example">
-            </div>
 
-            <div class="col-sm-4">
-                <input class="form-control form-control-lg" type="text" placeholder="Email"
-                    aria-label=".form-control-lg example">
-            </div>
-        </div>
-
-        <div class="mb-3 row">
-            <div class="col-sm-4">
-                <input class="form-control form-control-lg" type="text" placeholder="Phone"
-                    aria-label=".form-control-lg example">
-            </div>
-
-            <div class="col-sm-4">
-                <input class="form-control form-control-lg" type="text" placeholder="Travelers"
-                    aria-label=".form-control-lg example">
-            </div>
-        </div>
     </div>
 
     <script>
-        $(document).ready(function () {
-            $('select').select2();
-        });
+        // $(document).ready(function () {
+        //     $('select').select2();
+        // });
     </script>
 </body>
 

@@ -45,4 +45,5 @@ $cruiseShipData = $results['cruiseShip']->cruiseships;
 $nightsData = $results['TotalNights']->numberofnights;
 $visitPlaceData = $results['visitPlace']->placestovisit;
 // var_dump($visitPlaceData)
+
 ?>
