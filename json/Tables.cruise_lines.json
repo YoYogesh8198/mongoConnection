@@ -1,0 +1,41 @@
+[{
+  "_id": {
+    "$oid": "667c052d1525e9b26d3aa1f4"
+  },
+  "cruiselines": [
+    "American Cruise Lines",
+    "Atlas Ocean Voyages",
+    "Azamara",
+    "Carnival Cruise Line",
+    "Celebrity Cruises",
+    "Celestyal Cruises",
+    "Costa Cruises",
+    "Crystal Cruises",
+    "Cunard Line",
+    "Disney Cruise Line",
+    "Emerald Cruises",
+    "Explora Journeys",
+    "Holland America Line",
+    "Hurtigruten",
+    "Lindblad Expeditions",
+    "MSC Cruises",
+    "Norwegian Cruise Line",
+    "Oceania Cruises",
+    "P&O Cruises",
+    "Paul Gauguin Cruises",
+    "Ponant",
+    "Princess Cruises",
+    "Quark Expeditions",
+    "Regent Seven Seas Cruises",
+    "Ritz-Carlton Yacht Collection",
+    "Royal Caribbean International",
+    "Scenic Luxury Cruises & Tours",
+    "Seabourn",
+    "SeaDream Yacht Club",
+    "Silversea Cruises",
+    "Star Clippers",
+    "Viking",
+    "Virgin Voyages",
+    "Windstar Cruises"
+  ]
+}]

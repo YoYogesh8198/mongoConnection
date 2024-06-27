@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "667c066e1525e9b26d3aa1fa"
+  },
+  "numberofnights": [
+    "3-6 nights",
+    "7 nights",
+    "8-13 nights",
+    "14+ nights",
+    "21+ nights",
+    "30+ nights",
+    "60+ nights"
+  ]
+}]
