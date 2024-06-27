@@ -10,11 +10,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $cruise_ship = $_POST['cruise_ship'];
     $total_night = $_POST['total_night'];
     $visit_place = $_POST['visit_place'];
+    $uniqueId = $_POST['uniqueId'];
 
-    $insert = new MongoDB\Driver\BulkWrite;
-    $insert->insert(['name' => $name, 'email' => $email, 'phone' => $phone, 'traveler' => $traveler, 'regions' => $regions, 'cruise_menu' => $cruise_menu, 'departure_port' => $departure_port, 'cruise_ship' => $cruise_ship, 'total_night' => $total_night, "visit_place" => $visit_place]);
-    $client->executeBulkWrite('Tables.details', $insert);
+    $filter = ['uniqueId' => $uniqueId];
+    $options = [];
+    $query = new MongoDB\Driver\Query($filter, $options);
+    $rows = $client->executeQuery('Tables.details', $query); // $mongo contains the connection object to MongoDB
+
+    $check = 0;
+    foreach ($rows as $r) {
+        $check = 1;
+
+    }
+    if ($check == 0) {
+        $insert = new MongoDB\Driver\BulkWrite;
+        $insert->insert(['uniqueId' => $uniqueId, 'name' => $name, 'email' => $email, 'phone' => $phone, 'traveler' => $traveler, 'regions' => $regions, 'cruise_menu' => $cruise_menu, 'departure_port' => $departure_port, 'cruise_ship' => $cruise_ship, 'total_night' => $total_night, "visit_place" => $visit_place]);
+        $client->executeBulkWrite('Tables.details', $insert);
+    }
+
+
 }
+$num = mt_rand(100000, 999999);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -131,7 +147,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     </select>
                 </div>
             </div>
-            <input type="submit" class="btn btn-primary btn-lg" name="submit">
+            <input type="hidden" name="uniqueId" value="<?php echo $num; ?>" />
+
+            <button type="submit" class="btn btn-primary btn-lg" name="submit">submit</button>
         </form>
     </div>
 
