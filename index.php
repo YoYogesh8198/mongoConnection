@@ -1,12 +1,20 @@
 <?php include 'db.php';
-if (isset($_POST)) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
+    $traveler = $_POST['traveler'];
+    $regions = $_POST['regions'];
+    $cruise_menu = $_POST['cruise_menu'];
+    $departure_port = $_POST['departure_port'];
+    $cruise_ship = $_POST['cruise_ship'];
+    $total_night = $_POST['total_night'];
+    $visit_place = $_POST['visit_place'];
+
+    $insert = new MongoDB\Driver\BulkWrite;
+    $insert->insert(['name' => $name, 'email' => $email, 'phone' => $phone, 'traveler' => $traveler, 'regions' => $regions, 'cruise_menu' => $cruise_menu, 'departure_port' => $departure_port, 'cruise_ship' => $cruise_ship, 'total_night' => $total_night, "visit_place" => $visit_place]);
+    $client->executeBulkWrite('Tables.details', $insert);
 }
-$insert = new MongoDB\Driver\BulkWrite;
-$insert->insert(['name' => $name, 'email' => $email, 'phone' => $phone]);
-$client->executeBulkWrite('Tables.details', $insert);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,99 +35,104 @@ $client->executeBulkWrite('Tables.details', $insert);
 </head>
 
 <body>
-    <?php include 'db.php'; ?>
     <div class="container">
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <h1>Input Data</h1>
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input class="form-control form-control-lg" type="text" name="name" placeholder="Name"
-                        aria-label=".form-control-lg example">
+                    <input class="form-control form-control-lg" id="name" type="text" name="name" placeholder="Name"
+                        onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
                 </div>
 
                 <div class="col-sm-4">
-                    <input class="form-control form-control-lg" type="text" name="email" placeholder="Email"
-                        aria-label=".form-control-lg example">
+                    <input class="form-control form-control-lg" id="email" type="text" name="email" placeholder="Email"
+                        aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input class="form-control form-control-lg" type="text" name="phone" placeholder="Phone"
-                        aria-label=".form-control-lg example">
+                    <input class="form-control form-control-lg" id="mobile" type="tel" name="phone" placeholder="Phone"
+                        aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
                 </div>
 
                 <div class="col-sm-3">
-                    <select class="form-select-lg mb-3 w-100" aria-label="small select example">
-                        <option selected class="">Traverler</option>
-                        <option>choose Travelers</option>
+                    <select class="form-select-lg mb-3 w-100" name="traveler" aria-label="small select example">
+                        <option class="">choose Travelers</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
                     </select>
                 </div>
             </div>
 
-            <input type="submit" class="btn btn-primary btn-lg">
+
+
+            <h1>Collection Data</h1>
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                    <select class="form-select-lg mb-3 w-75" name="regions" aria-label="small select example">
+                        <option class=""> regions menu</option>
+                        <?php foreach ($regionsData as $region): ?>
+                            <option class="" value="<?php echo $region; ?>"><?php echo $region; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="col-sm-4">
+                    <select class="form-select-lg mb-3 w-75" name="cruise_menu" aria-label="small select example">
+                        <option class="">cruise menu</option>
+                        <?php foreach ($cruiseData as $cruise): ?>
+                            <option value="<?php echo $cruise; ?>"><?php echo $cruise; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="col-sm-4">
+                    <select class="form-select-lg mb-3  w-75" name="departure_port" aria-label="small select example">
+                        <option class="">All Departure ports</option>
+                        <?php foreach ($departurePorts as $DeparturePorts): ?>
+                            <option class="" value="<?php echo $DeparturePorts; ?>"><?php echo $DeparturePorts; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                    <select class="form-select-lg mb-3 w-75" name="cruise_ship" aria-label="small select example">
+                        <option class="">cruise ships</option>
+                        <?php foreach ($cruiseShipData as $shipData): ?>
+                            <option value="<?php echo $shipData; ?>"><?php echo $shipData; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="col-sm-4"">
+                <select class=" form-select-lg mb-3 w-75" name="total_night" aria-label="small select example">
+                    <option>Total Nights stay</option>
+                    <?php foreach ($nightsData as $nightData): ?>
+                        <option value="<?php echo $nightData; ?>"><?php echo $nightData; ?></option>
+                    <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <div class="col-sm-3">
+                    <select class="form-select-lg mb-3 w-75" name="visit_place" aria-label="small select example">
+                        <option class="">place Visit</option>
+                        <?php foreach ($visitPlaceData as $visitplace): ?>
+                            <option value="<?php echo $visitplace; ?>"><?php echo $visitplace; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-primary btn-lg" name="submit">
         </form>
-
-        <h1>Collection Data</h1>
-        <div class="mb-3 row">
-            <div class="col-sm-4">
-                <select class="form-select-lg mb-3 w-75 " aria-label="small select example">
-                    <option selected class=""> regions menu</option>
-                    <?php foreach ($regionsData as $region): ?>
-                        <option class="" value="<?php echo $region; ?>"><?php echo $region; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="col-sm-4">
-                <select class="form-select-lg mb-3 w-75" aria-label="small select example">
-                    <option selected class="">cruise menu</option>
-                    <?php foreach ($cruiseData as $cruise): ?>
-                        <option value="<?php echo $cruise; ?>"><?php echo $cruise; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="col-sm-4">
-                <select class="form-select-lg mb-3  w-75" aria-label="small select example">
-                    <option selected class="">All Departure ports</option>
-                    <?php foreach ($departurePorts as $DeparturePorts): ?>
-                        <option class="" value="<?php echo $DeparturePorts; ?>"><?php echo $DeparturePorts; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
-        <div class="mb-3 row">
-            <div class="col-sm-4">
-                <select class="form-select-lg mb-3 w-75" aria-label="small select example">
-                    <option selected class="">cruise ships</option>
-                    <?php foreach ($cruiseShipData as $shipData): ?>
-                        <option value="<?php echo $shipData; ?>"><?php echo $shipData; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="col-sm-4"">
-                <select class=" form-select-lg mb-3 w-75" aria-label="small select example">
-                <option selected>Total Nights stay</option>
-                <?php foreach ($nightsData as $nightData): ?>
-                    <option value="<?php echo $nightData; ?>"><?php echo $nightData; ?></option>
-                <?php endforeach; ?>
-                </select>
-            </div>
-
-            <div class="col-sm-3">
-                <select class="form-select-lg mb-3 w-75" aria-label="small select example">
-                    <option selected class="">place Visit</option>
-                    <?php foreach ($visitPlaceData as $visitplace): ?>
-                        <option value="<?php echo $visitplace; ?>"><?php echo $visitplace; ?></option>
-                    <?php endforeach; ?>
-                </select>
-            </div>
-        </div>
-
-
     </div>
 
     <script>
@@ -127,6 +140,7 @@ $client->executeBulkWrite('Tables.details', $insert);
         //     $('select').select2();
         // });
     </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
