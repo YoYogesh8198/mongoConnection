@@ -8,6 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $traveler = $_POST['traveler'];
+    $number_of_adults = $_POST['number_of_adults'];
+    $number_of_children = $_POST['number_of_children'];
+    $number_of_infant = $_POST['number_of_infant'];
     $regions = $_POST['regions'];
     $cruise_menu = $_POST['cruise_menu'];
     $departure_port = $_POST['departure_port'];
@@ -33,6 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 'email' => $email,
                 'phone' => $phone,
                 'traveler' => $traveler,
+                "number_of_adults" => $number_of_adults,
+                "number_of_children" => $number_of_children,
+                "number_of_infant" => $number_of_infant,
                 'regions' => $regions,
                 'cruise_menu' => $cruise_menu,
                 'departure_port' => $departure_port,
@@ -41,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 'total_night' => $total_night,
                 "visit_place" => $visit_place,
                 "depart_date" => $depart_date,
-                "return_date" => $return_date
+                "return_date" => $return_date,
             ]
         );
         $client->executeBulkWrite('Tables.details', $insert);
@@ -174,7 +180,7 @@ $num = mt_rand(100000, 999999);
                         <?php endforeach; ?>
                     </select>
                 </div>
-                
+
                 <div class="col-1"></div>
 
                 <div class="col-sm-4">
@@ -390,12 +396,11 @@ $num = mt_rand(100000, 999999);
             } else {
                 text = val + " Adults";
             }
-            var startingValueInfant = 0;
+            var startingValueInfant = val == 1 ? 1 : 0;
             var html_text = `
             <div class="passenger_rio">
                 <div class='mt-2 pt-2'>` + text + ` Choose: 
                     <input type="radio" class="radio" value="yes" id="pax_type" name="pax_type"     onclick="pax_travler(&quot;yes&quot;);" style="margin-left:10px;"> Yes
-
                     <input type="radio" class="radio" value="no" id="pax_type" name="pax_type" onclick="pax_travler(&quot;no&quot;);" style="margin-left:10px;"> No
                 </div> 
                 <span id="pax_travler" style="display:none;">
