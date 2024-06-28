@@ -60,24 +60,24 @@ $num = mt_rand(100000, 999999);
             <h1>Input Data</h1>
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input class="form-control form-control-lg" id="name" type="text" name="name" placeholder="Name"
+                    <input class="w-100 form-control" id="name" type="text" name="name" placeholder="Name"
                         onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
                 </div>
 
                 <div class="col-sm-4">
-                    <input class="form-control form-control-lg" id="email" type="text" name="email" placeholder="Email"
+                    <input class="w-100 form-control" id="email" type="text" name="email" placeholder="Email"
                         aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input class="form-control form-control-lg" id="mobile" type="tel" name="phone" placeholder="Phone"
+                    <input class="w-100 form-control" id="mobile" type="tel" name="phone" placeholder="Phone"
                         aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
                 </div>
 
                 <div class="col-sm-4">
-                    <select class="form-select-lg mb-3 w-100" name="traveler" aria-label="small select example">
+                    <select class="w-100 form-control" name="traveler" aria-label="small select example">
                         <option value="">choose Travelers</option>
                         <option>1</option>
                         <option>2</option>
@@ -95,8 +95,8 @@ $num = mt_rand(100000, 999999);
 
             <h1>Collection Data</h1>
             <div class="mb-3 row">
-                <div class="col-sm-6">
-                    <select class="form-select-lg mb-3 w-75" name="regions" aria-label="small select example">
+                <div class="col-sm-4">
+                    <select class="w-100 form-control" name="regions" aria-label="small select example">
                         <option value="">Destination (Any)</option>
                         <?php foreach ($regionsData as $region): ?>
                             <option class="" value="<?php echo $region; ?>"><?php echo $region; ?></option>
@@ -104,17 +104,18 @@ $num = mt_rand(100000, 999999);
                     </select>
                 </div>
 
-                <div class="col-sm-6">
-                    <select class="form-select-lg mb-3 w-75" name="cruise_menu" aria-label="small select example">
+                <div class="col-sm-4">
+                    <select class="w-100 form-control" name="cruise_menu" aria-label="small select example">
                         <option value="">cruise Lines(Any)</option>
                         <?php foreach ($cruiseData as $cruise): ?>
                             <option value="<?php echo $cruise; ?>"><?php echo $cruise; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-
-                <div class="col-sm-6">
-                    <select class="form-select-lg mb-3  w-75" name="departure_port" aria-label="small select example">
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                    <select class="w-100 form-control" name="departure_port" aria-label="small select example">
                         <option value="">Departure ports(Any)</option>
                         <?php foreach ($departurePorts as $DeparturePorts): ?>
                             <option class="" value="<?php echo $DeparturePorts; ?>"><?php echo $DeparturePorts; ?></option>
@@ -122,18 +123,19 @@ $num = mt_rand(100000, 999999);
                     </select>
                 </div>
                 <!-- </div>
-            <div class="mb-3 row"> -->
-                <div class="col-sm-6">
-                    <select class="form-select-lg mb-3 w-75" name="cruise_ship" aria-label="small select example">
+                <div class="mb-3 row"> -->
+                <div class="col-sm-4">
+                    <select class="w-100 form-control" name="cruise_ship" aria-label="small select example">
                         <option value="">cruise ships (Any)</option>
                         <?php foreach ($cruiseShipData as $shipData): ?>
                             <option value="<?php echo $shipData; ?>"><?php echo $shipData; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-
-                <div class="col-sm-6">
-                    <select class=" form-select-lg mb-3 w-75" name="total_night" aria-label="small select example">
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-4">
+                    <select class="w-100 form-control" name="total_night" aria-label="small select example">
                         <option value="">Total Nights stay</option>
                         <?php foreach ($nightsData as $nightData): ?>
                             <option value="<?php echo $nightData; ?>"><?php echo $nightData; ?></option>
@@ -141,25 +143,26 @@ $num = mt_rand(100000, 999999);
                     </select>
                 </div>
 
-                <div class="col-sm-6">
-                    <select class="form-select-lg mb-3 w-75" name="visit_place" aria-label="small select example">
+                <div class="col-sm-4">
+                    <select class="w-100 form-control" name="visit_place" aria-label="small select example">
                         <option value="">place Visit (Any)</option>
                         <?php foreach ($visitPlaceData as $visitplace): ?>
                             <option value="<?php echo $visitplace; ?>"><?php echo $visitplace; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-
-                <div class="col-sm-6 ">
-                    <div class="cal_flx_input mb-3 w-75">
-                        <input class="form-control form-control-lg drop_in w-100" type="text"
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-4 ">
+                    <div class="cal_flx_input mb-3 w-100">
+                        <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="depart_date"
                             name="depart_date" autocomplete="off">
                     </div>
                 </div>
-                <div class="col-sm-6 ">
-                    <div class="cal_flx_input mb-3 w-75">
-                        <input class="form-control form-control-lg drop_in w-100" type="text"
+                <div class="col-sm-4 ">
+                    <div class="cal_flx_input mb-3 w-100">
+                        <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="return_date"
                             name="return_date" autocomplete="off">
                     </div>
@@ -167,7 +170,7 @@ $num = mt_rand(100000, 999999);
             </div>
             <input type="hidden" name="uniqueId" value="<?php echo $num; ?>" />
 
-            <button type="submit" class="btn btn-primary btn-lg" name="submit">submit</button>
+            <button type="submit" class="btn btn-primary btn" name="submit">submit</button>
         </form>
     </div>
 
@@ -208,7 +211,7 @@ $num = mt_rand(100000, 999999);
             // var regex = /^[0-9]*$/;
             var regex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/;
             if (!regex.test(input) || input.length > 10) {
-                $("#mobile").css("border", "2px solid red");
+                $("#mobile").css("border", "1px solid red");
                 $("#mobile").focus();
             } else {
                 $("#mobile").css("border", "1px solid #ced4da");
