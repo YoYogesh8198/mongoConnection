@@ -68,6 +68,9 @@ $num = mt_rand(100000, 999999);
         crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -196,7 +199,16 @@ $num = mt_rand(100000, 999999);
             </div>
             <input type="hidden" name="uniqueId" value="<?php echo $num; ?>" />
 
-            <button type="submit" class="btn btn-primary btn" name="submit">submit</button>
+            <div class="row">
+                <div class="col-md-3 ">
+                    <button type="submit" class="btn btn-primary btn w-100" name="submit"><i class="fa-regular fa-paper-plane"></i> submit</button>
+                </div>
+                <div class="col-2"></div>
+                <div class="col-md-3">
+                    <button class="btn btn-primary btn w-100" name="deals"><i
+                            class="fa-regular fa-bell"></i> Deals</button>
+                </div>
+            </div>
         </form>
     </div>
 
