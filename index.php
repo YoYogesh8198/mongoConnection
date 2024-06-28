@@ -98,6 +98,7 @@ $num = mt_rand(100000, 999999);
                     <input class="w-100 form-control mb-3" id="email" type="text" name="email" placeholder="Email"
                         aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);">
                 </div>
+                <div class="col-1"></div>
                 <div class="col-sm-4">
                     <input class="w-100 form-control mb-3" id="mobile" type="tel" name="phone" placeholder="Phone"
                         aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
@@ -146,6 +147,8 @@ $num = mt_rand(100000, 999999);
                     </select>
                 </div>
 
+                <div class="col-1"></div>
+
                 <div class="col-sm-4">
                     <select class="w-100 form-control mb-3" name="departure_port" id="Departure_ports"
                         aria-label="small select example">
@@ -163,7 +166,7 @@ $num = mt_rand(100000, 999999);
                     </label>
                 </div>
 
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <select class="w-100 mb-3 form-control" name="cruise_ship" aria-label="small select example">
                         <option value="">cruise ships (Any)</option>
                         <?php foreach ($cruiseShipData as $shipData): ?>
@@ -171,6 +174,8 @@ $num = mt_rand(100000, 999999);
                         <?php endforeach; ?>
                     </select>
                 </div>
+                
+                <div class="col-1"></div>
 
                 <div class="col-sm-4">
                     <select class="w-100 mb-3 form-control" name="total_night" aria-label="small select example">
@@ -190,6 +195,8 @@ $num = mt_rand(100000, 999999);
                     </select>
                 </div>
 
+                <div class="col-1"></div>
+
                 <div class="col-sm-4 ">
                     <div class="cal_flx_input mb-3 w-100">
                         <input class="form-control form-control drop_in w-100" type="text"
@@ -197,8 +204,6 @@ $num = mt_rand(100000, 999999);
                             name="depart_date" autocomplete="off" readonly>
                     </div>
                 </div>
-
-
 
                 <div class="col-sm-4 ">
                     <div class="cal_flx_input mb-3 w-100">
@@ -224,6 +229,7 @@ $num = mt_rand(100000, 999999);
         </form>
     </div>
 
+    <!-- //*script -->
 
     <script>
         function show_name(value) {
