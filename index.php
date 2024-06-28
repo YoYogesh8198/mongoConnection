@@ -87,26 +87,24 @@ $num = mt_rand(100000, 999999);
                     <h3 class="mb-3 text-center">Input Data</h3>
                 </div>
             </div>
+
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input class="w-100 form-control" id="name" type="text" name="name" placeholder="Name"
+                    <input class="w-100 form-control mb-3" id="name" type="text" name="name" placeholder="Name"
                         onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
                 </div>
 
                 <div class="col-sm-4">
-                    <input class="w-100 form-control" id="email" type="text" name="email" placeholder="Email"
+                    <input class="w-100 form-control mb-3" id="email" type="text" name="email" placeholder="Email"
                         aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);">
                 </div>
-            </div>
-
-            <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <input class="w-100 form-control" id="mobile" type="tel" name="phone" placeholder="Phone"
+                    <input class="w-100 form-control mb-3" id="mobile" type="tel" name="phone" placeholder="Phone"
                         aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
                 </div>
 
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="traveler" aria-label="small select example"
+                    <select class="w-100 form-control mb-3" name="traveler" aria-label="small select example"
                         onchange="select_traveler(this.value);" id="total_passenger">
                         <option value="">choose Travelers</option>
                         <option>1</option>
@@ -122,7 +120,7 @@ $num = mt_rand(100000, 999999);
                 </div>
             </div>
 
-
+            <!-- //* collection data  -->
 
             <div class="row">
                 <div class="col-8">
@@ -131,7 +129,7 @@ $num = mt_rand(100000, 999999);
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="regions" aria-label="small select example">
+                    <select class="w-100 form-control mb-3" name="regions" aria-label="small select example">
                         <option value="">Destination (Any)</option>
                         <?php foreach ($regionsData as $region): ?>
                             <option class="" value="<?php echo $region; ?>"><?php echo $region; ?></option>
@@ -140,17 +138,16 @@ $num = mt_rand(100000, 999999);
                 </div>
 
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="cruise_menu" aria-label="small select example">
+                    <select class="w-100 form-control mb-3" name="cruise_menu" aria-label="small select example">
                         <option value="">cruise Lines(Any)</option>
                         <?php foreach ($cruiseData as $cruise): ?>
                             <option value="<?php echo $cruise; ?>"><?php echo $cruise; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-            </div>
-            <div class="mb-3 row">
+
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="departure_port" id="Departure_ports"
+                    <select class="w-100 form-control mb-3" name="departure_port" id="Departure_ports"
                         aria-label="small select example">
                         <option value="">Departure ports(Any)</option>
                         <?php foreach ($departurePorts as $DeparturePorts): ?>
@@ -159,26 +156,24 @@ $num = mt_rand(100000, 999999);
                     </select>
                 </div>
 
-                <div class="form-check col-sm-4 ">
+                <div class="form-check col-sm-4 mb-3">
                     <input class="form-check-input ml-8" type="checkbox" value="" id="return_port" name="return_port">
                     <label class="form-check-label" for="return_port">
                         Return to same port
                     </label>
                 </div>
-            </div>
-            <div class="mb-3 row">
-                <div class="col-sm-8">
-                    <select class="w-100 form-control" name="cruise_ship" aria-label="small select example">
+
+                <div class="col-sm-9">
+                    <select class="w-100 mb-3 form-control" name="cruise_ship" aria-label="small select example">
                         <option value="">cruise ships (Any)</option>
                         <?php foreach ($cruiseShipData as $shipData): ?>
                             <option value="<?php echo $shipData; ?>"><?php echo $shipData; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-            </div>
-            <div class="mb-3 row">
+
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="total_night" aria-label="small select example">
+                    <select class="w-100 mb-3 form-control" name="total_night" aria-label="small select example">
                         <option value="">Total Nights stay</option>
                         <?php foreach ($nightsData as $nightData): ?>
                             <option value="<?php echo $nightData; ?>"><?php echo $nightData; ?></option>
@@ -187,15 +182,14 @@ $num = mt_rand(100000, 999999);
                 </div>
 
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="visit_place" aria-label="small select example">
+                    <select class="w-100 mb-3 form-control" name="visit_place" aria-label="small select example">
                         <option value="">place Visit (Any)</option>
                         <?php foreach ($visitPlaceData as $visitplace): ?>
                             <option value="<?php echo $visitplace; ?>"><?php echo $visitplace; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-            </div>
-            <div class="mb-3 row">
+
                 <div class="col-sm-4 ">
                     <div class="cal_flx_input mb-3 w-100">
                         <input class="form-control form-control drop_in w-100" type="text"
@@ -203,10 +197,13 @@ $num = mt_rand(100000, 999999);
                             name="depart_date" autocomplete="off" readonly>
                     </div>
                 </div>
+
+
+
                 <div class="col-sm-4 ">
                     <div class="cal_flx_input mb-3 w-100">
                         <input class="form-control form-control drop_in w-100" type="text"
-                            placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="return_date"
+                            placeholder="Return Date(Any)" aria-label=".form-control-lg example" id="return_date"
                             name="return_date" autocomplete="off" readonly>
                     </div>
                 </div>
@@ -214,7 +211,7 @@ $num = mt_rand(100000, 999999);
             <input type="hidden" name="uniqueId" value="<?php echo $num; ?>" />
 
             <div class="row">
-                <div class="col-md-3 ">
+                <div class="col-md-3 mb-3">
                     <button type="submit" class="btn btn-primary btn w-100" id="submit" name="submit"><i
                             class="fa-regular fa-paper-plane"></i> submit</button>
                 </div>
