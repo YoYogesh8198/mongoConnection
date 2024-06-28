@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $regions = $_POST['regions'];
     $cruise_menu = $_POST['cruise_menu'];
     $departure_port = $_POST['departure_port'];
-    $return_port = isset($_POST['return_port']) ? $_POST['return_port'] : " ";
+    $return_port = isset($_POST['return_port']) ? $_POST['return_port'] : "";
     $cruise_ship = $_POST['cruise_ship'];
     $total_night = $_POST['total_night'];
     $visit_place = $_POST['visit_place'];
