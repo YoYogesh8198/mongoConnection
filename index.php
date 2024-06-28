@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $total_night = $_POST['total_night'];
     $visit_place = $_POST['visit_place'];
     $depart_date = $_POST['depart_date'];
+    $return_date = $_POST['return_date'];
     $uniqueId = $_POST['uniqueId'];
 
     $filter = ['uniqueId' => $uniqueId];
@@ -20,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     if (count($rows->toArray()) == 0) {
         $insert = new MongoDB\Driver\BulkWrite;
-        $insert->insert(['uniqueId' => $uniqueId, 'name' => $name, 'email' => $email, 'phone' => $phone, 'traveler' => $traveler, 'regions' => $regions, 'cruise_menu' => $cruise_menu, 'departure_port' => $departure_port, 'cruise_ship' => $cruise_ship, 'total_night' => $total_night, "visit_place" => $visit_place, "depart_date" => $depart_date]);
+        $insert->insert(['uniqueId' => $uniqueId, 'name' => $name, 'email' => $email, 'phone' => $phone, 'traveler' => $traveler, 'regions' => $regions, 'cruise_menu' => $cruise_menu, 'departure_port' => $departure_port, 'cruise_ship' => $cruise_ship, 'total_night' => $total_night, "visit_place" => $visit_place, "depart_date" => $depart_date, "return_date" => $return_date]);
         $client->executeBulkWrite('Tables.details', $insert);
     }
 }
@@ -33,9 +34,15 @@ $num = mt_rand(100000, 999999);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MongoDB Collection Data</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+    <!-- <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
+    <!-- <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet"> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -54,24 +61,24 @@ $num = mt_rand(100000, 999999);
             <div class="mb-3 row">
                 <div class="col-sm-4">
                     <input class="form-control form-control-lg" id="name" type="text" name="name" placeholder="Name"
-                        onkeyup="show_name(this.value);" aria-label=".form-control-lg example" autocomplete="off">
+                        onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
                 </div>
 
                 <div class="col-sm-4">
                     <input class="form-control form-control-lg" id="email" type="text" name="email" placeholder="Email"
-                        aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);" autocomplete="off">
+                        aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <div class="col-sm-4">
                     <input class="form-control form-control-lg" id="mobile" type="tel" name="phone" placeholder="Phone"
-                        aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)" autocomplete="off">
+                        aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
                 </div>
 
                 <div class="col-sm-4">
                     <select class="form-select-lg mb-3 w-100" name="traveler" aria-label="small select example">
-                        <option value="" disabled selected>choose Travelers</option>
+                        <option value="">choose Travelers</option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -90,7 +97,7 @@ $num = mt_rand(100000, 999999);
             <div class="mb-3 row">
                 <div class="col-sm-6">
                     <select class="form-select-lg mb-3 w-75" name="regions" aria-label="small select example">
-                        <option value="" disabled selected>Destination (Any)</option>
+                        <option value="">Destination (Any)</option>
                         <?php foreach ($regionsData as $region): ?>
                             <option class="" value="<?php echo $region; ?>"><?php echo $region; ?></option>
                         <?php endforeach; ?>
@@ -99,7 +106,7 @@ $num = mt_rand(100000, 999999);
 
                 <div class="col-sm-6">
                     <select class="form-select-lg mb-3 w-75" name="cruise_menu" aria-label="small select example">
-                        <option value="" disabled selected>cruise Lines(Any)</option>
+                        <option value="">cruise Lines(Any)</option>
                         <?php foreach ($cruiseData as $cruise): ?>
                             <option value="<?php echo $cruise; ?>"><?php echo $cruise; ?></option>
                         <?php endforeach; ?>
@@ -108,7 +115,7 @@ $num = mt_rand(100000, 999999);
 
                 <div class="col-sm-6">
                     <select class="form-select-lg mb-3  w-75" name="departure_port" aria-label="small select example">
-                        <option value="" disabled selected>Departure ports(Any)</option>
+                        <option value="">Departure ports(Any)</option>
                         <?php foreach ($departurePorts as $DeparturePorts): ?>
                             <option class="" value="<?php echo $DeparturePorts; ?>"><?php echo $DeparturePorts; ?></option>
                         <?php endforeach; ?>
@@ -118,7 +125,7 @@ $num = mt_rand(100000, 999999);
             <div class="mb-3 row"> -->
                 <div class="col-sm-6">
                     <select class="form-select-lg mb-3 w-75" name="cruise_ship" aria-label="small select example">
-                        <option value="" disabled selected>cruise ships (Any)</option>
+                        <option value="">cruise ships (Any)</option>
                         <?php foreach ($cruiseShipData as $shipData): ?>
                             <option value="<?php echo $shipData; ?>"><?php echo $shipData; ?></option>
                         <?php endforeach; ?>
@@ -127,7 +134,7 @@ $num = mt_rand(100000, 999999);
 
                 <div class="col-sm-6">
                     <select class=" form-select-lg mb-3 w-75" name="total_night" aria-label="small select example">
-                        <option value="" disabled selected>Total Nights stay</option>
+                        <option value="">Total Nights stay</option>
                         <?php foreach ($nightsData as $nightData): ?>
                             <option value="<?php echo $nightData; ?>"><?php echo $nightData; ?></option>
                         <?php endforeach; ?>
@@ -136,18 +143,25 @@ $num = mt_rand(100000, 999999);
 
                 <div class="col-sm-6">
                     <select class="form-select-lg mb-3 w-75" name="visit_place" aria-label="small select example">
-                        <option value="" disabled selected>place Visit (Any)</option>
+                        <option value="">place Visit (Any)</option>
                         <?php foreach ($visitPlaceData as $visitplace): ?>
                             <option value="<?php echo $visitplace; ?>"><?php echo $visitplace; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
 
-                <div class="col-sm-3 ">
-                    <div class="cal_flx_input">
+                <div class="col-sm-6 ">
+                    <div class="cal_flx_input mb-3 w-75">
                         <input class="form-control form-control-lg drop_in w-100" type="text"
                             placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="depart_date"
                             name="depart_date" autocomplete="off">
+                    </div>
+                </div>
+                <div class="col-sm-6 ">
+                    <div class="cal_flx_input mb-3 w-75">
+                        <input class="form-control form-control-lg drop_in w-100" type="text"
+                            placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="return_date"
+                            name="return_date" autocomplete="off">
                     </div>
                 </div>
             </div>
@@ -207,17 +221,65 @@ $num = mt_rand(100000, 999999);
             }
         }
 
-        $(document).ready(function () {
-            $("#depart_date").datepicker({
+        $(function () {
+            $('#depart_date').daterangepicker({
                 singleDatePicker: true,
                 timePicker: false,
                 autoUpdateInput: false,
                 minDate: new Date(),
+                startDate: moment().startOf('hour'),
+                endDate: moment().startOf('hour').add(32, 'hour'),
                 locale: {
                     format: 'YYYY-MM-DD'
                 }
+            }).on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('YYYY-MM-DD'));
+
+                $('#return_date').daterangepicker({
+                    singleDatePicker: true,
+                    timePicker: false,
+                    autoUpdateInput: false,
+                    minDate: new Date(picker.startDate.format('YYYY-MM-DD')),
+                    startDate: moment().startOf('hour'),
+                    endDate: moment().startOf('hour').add(32, 'hour'),
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+                }).on('apply.daterangepicker', function (ev, picker) {
+                    $(this).val(picker.startDate.format('YYYY-MM-DD'));
+                });
+            });
+
+            $('#return_date').daterangepicker({
+                singleDatePicker: true,
+                timePicker: false,
+                autoUpdateInput: false,
+                minDate: new Date(),
+                startDate: moment().startOf('hour'),
+                endDate: moment().startOf('hour').add(32, 'hour'),
+                locale: {
+                    format: 'YYYY-MM-DD'
+                }
+            }).on('apply.daterangepicker', function (ev, picker) {
+                $(this).val(picker.startDate.format('YYYY-MM-DD'));
+
+                $('#depart_date').daterangepicker({
+                    singleDatePicker: true,
+                    timePicker: false,
+                    autoUpdateInput: false,
+                    minDate: new Date(),
+                    maxDate: new Date(picker.startDate.format('YYYY-MM-DD')),
+                    startDate: moment().startOf('hour'),
+                    endDate: moment().startOf('hour').add(32, 'hour'),
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+                }).on('apply.daterangepicker', function (ev, picker) {
+                    $(this).val(picker.startDate.format('YYYY-MM-DD'));
+                });
             });
         });
+
     </script>
 </body>
 
