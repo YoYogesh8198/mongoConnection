@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $regions = $_POST['regions'];
     $cruise_menu = $_POST['cruise_menu'];
     $departure_port = $_POST['departure_port'];
-    $return_port = $_POST['return_port'];
+    $return_port = isset($_POST['return_port']) ? $_POST['return_port'] : " " ;
     $cruise_ship = $_POST['cruise_ship'];
     $total_night = $_POST['total_night'];
     $visit_place = $_POST['visit_place'];
@@ -269,7 +269,7 @@ $num = mt_rand(100000, 999999);
             var depart_ports = $('#Departure_ports').val();
             var checkbox = $('#return_port');
 
-            if (!checkbox.is(':checked') && depart_ports === "") {
+            if (!checkbox.is(':checked') && depart_ports == "" || depart_ports == 'undefined' || depart_ports == null) {
                 console.log("Empty fields");
             } else if (checkbox.is(':checked') || depart_ports !== "") {
                 console.log("filled");
