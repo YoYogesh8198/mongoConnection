@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $regions = $_POST['regions'];
     $cruise_menu = $_POST['cruise_menu'];
     $departure_port = $_POST['departure_port'];
-    $return_port = isset($_POST['return_port']) ? $_POST['return_port'] : " " ;
+    $return_port = isset($_POST['return_port']) ? $_POST['return_port'] : " ";
     $cruise_ship = $_POST['cruise_ship'];
     $total_night = $_POST['total_night'];
     $visit_place = $_POST['visit_place'];
@@ -308,11 +308,13 @@ $num = mt_rand(100000, 999999);
         // });
 
         $(function () {
+            var date = new Date();
             $('#depart_date').daterangepicker({
                 singleDatePicker: true,
                 timePicker: false,
                 autoUpdateInput: false,
                 minDate: new Date(),
+                maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),
                 startDate: moment().startOf('hour'),
                 endDate: moment().startOf('hour').add(32, 'hour'),
                 locale: {
@@ -326,6 +328,7 @@ $num = mt_rand(100000, 999999);
                     timePicker: false,
                     autoUpdateInput: false,
                     minDate: new Date(picker.startDate.format('YYYY-MM-DD')),
+                    maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),
                     startDate: moment().startOf('hour'),
                     endDate: moment().startOf('hour').add(32, 'hour'),
                     locale: {
