@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $regions = $_POST['regions'];
     $cruise_menu = $_POST['cruise_menu'];
     $departure_port = $_POST['departure_port'];
+    $return_port = $_POST['return_port'];
     $cruise_ship = $_POST['cruise_ship'];
     $total_night = $_POST['total_night'];
     $visit_place = $_POST['visit_place'];
@@ -21,7 +22,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     if (count($rows->toArray()) == 0) {
         $insert = new MongoDB\Driver\BulkWrite;
-        $insert->insert(['uniqueId' => $uniqueId, 'name' => $name, 'email' => $email, 'phone' => $phone, 'traveler' => $traveler, 'regions' => $regions, 'cruise_menu' => $cruise_menu, 'departure_port' => $departure_port, 'cruise_ship' => $cruise_ship, 'total_night' => $total_night, "visit_place" => $visit_place, "depart_date" => $depart_date, "return_date" => $return_date]);
+        $insert->insert(
+            [
+                'uniqueId' => $uniqueId,
+                'name' => $name,
+                'email' => $email,
+                'phone' => $phone,
+                'traveler' => $traveler,
+                'regions' => $regions,
+                'cruise_menu' => $cruise_menu,
+                'departure_port' => $departure_port,
+                'cruise_ship' => $cruise_ship,
+                'total_night' => $total_night,
+                "visit_place" => $visit_place,
+                "depart_date" => $depart_date,
+                "return_date" => $return_date,
+                "return_port" => $return_port
+            ]
+        );
         $client->executeBulkWrite('Tables.details', $insert);
     }
 }
@@ -115,16 +133,24 @@ $num = mt_rand(100000, 999999);
             </div>
             <div class="mb-3 row">
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="departure_port" aria-label="small select example">
+                    <select class="w-100 form-control" name="departure_port" id="Departure_ports"
+                        aria-label="small select example">
                         <option value="">Departure ports(Any)</option>
                         <?php foreach ($departurePorts as $DeparturePorts): ?>
                             <option class="" value="<?php echo $DeparturePorts; ?>"><?php echo $DeparturePorts; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <!-- </div>
-                <div class="mb-3 row"> -->
-                <div class="col-sm-4">
+
+                <div class="form-check col-sm-4 ">
+                    <input class="form-check-input ml-8" type="checkbox" value="" id="return_port" name="return_port">
+                    <label class="form-check-label" for="return_port">
+                        Return to same port
+                    </label>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="col-sm-8">
                     <select class="w-100 form-control" name="cruise_ship" aria-label="small select example">
                         <option value="">cruise ships (Any)</option>
                         <?php foreach ($cruiseShipData as $shipData): ?>
@@ -157,14 +183,14 @@ $num = mt_rand(100000, 999999);
                     <div class="cal_flx_input mb-3 w-100">
                         <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="depart_date"
-                            name="depart_date" autocomplete="off">
+                            name="depart_date" autocomplete="off" readonly>
                     </div>
                 </div>
                 <div class="col-sm-4 ">
                     <div class="cal_flx_input mb-3 w-100">
                         <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="return_date"
-                            name="return_date" autocomplete="off">
+                            name="return_date" autocomplete="off" readonly>
                     </div>
                 </div>
             </div>
@@ -223,6 +249,18 @@ $num = mt_rand(100000, 999999);
                 $("#mobile").focus();
             }
         }
+
+        $(document).ready(function () {
+            $('#return_port').click(function () {
+                var depart_ports = $('#Departure_ports').val();
+                var checkbox = $('#return_port');
+
+                if ($(this).is(':checked') && depart_ports !== "") {
+                    checkbox.attr('value', checkbox.attr('value') + ' ' + depart_ports);
+                    console.log("Value updated: " + checkbox.attr('value'));
+                }
+            });
+        });
 
         $(function () {
             $('#depart_date').daterangepicker({

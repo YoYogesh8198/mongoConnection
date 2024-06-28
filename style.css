@@ -11,6 +11,21 @@
   font-size: 15px !important;
   font-weight: 400 !important;
 }
-.form-control:focus {
+.form-control,.form-check-input:focus {
   box-shadow: none !important;
+}
+.form-check{
+  margin-left: 10px !important;
+}
+.form-check-input[type=checkbox] {
+  border-radius: .25em;
+  padding: 13px;
+}
+label {
+  display: inline-block;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100%;
 }
