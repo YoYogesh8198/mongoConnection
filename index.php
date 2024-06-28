@@ -314,7 +314,7 @@ $num = mt_rand(100000, 999999);
                 timePicker: false,
                 autoUpdateInput: false,
                 minDate: new Date(),
-                maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),
+                maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),// datepicker for 35 months from current months 
                 startDate: moment().startOf('hour'),
                 endDate: moment().startOf('hour').add(32, 'hour'),
                 locale: {
@@ -328,7 +328,7 @@ $num = mt_rand(100000, 999999);
                     timePicker: false,
                     autoUpdateInput: false,
                     minDate: new Date(picker.startDate.format('YYYY-MM-DD')),
-                    maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),
+                    maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),// datepicker for 35 months from current months 
                     startDate: moment().startOf('hour'),
                     endDate: moment().startOf('hour').add(32, 'hour'),
                     locale: {
