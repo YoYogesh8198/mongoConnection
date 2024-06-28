@@ -1,4 +1,8 @@
-<?php include 'db.php';
+<?php
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+// for warning when warning show on UI
+include 'db.php';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
