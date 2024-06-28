@@ -49,24 +49,24 @@ $num = mt_rand(100000, 999999);
 <body>
     <div class="container">
 
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
             <h1>Input Data</h1>
             <div class="mb-3 row">
                 <div class="col-sm-4">
                     <input class="form-control form-control-lg" id="name" type="text" name="name" placeholder="Name"
-                        onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
+                        onkeyup="show_name(this.value);" aria-label=".form-control-lg example" autocomplete="off">
                 </div>
 
                 <div class="col-sm-4">
                     <input class="form-control form-control-lg" id="email" type="text" name="email" placeholder="Email"
-                        aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);">
+                        aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);" autocomplete="off">
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <div class="col-sm-4">
                     <input class="form-control form-control-lg" id="mobile" type="tel" name="phone" placeholder="Phone"
-                        aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
+                        aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)" autocomplete="off">
                 </div>
 
                 <div class="col-sm-4">
