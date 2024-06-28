@@ -12,7 +12,7 @@ function show_name(value) {
     $("#name").css("border", "1px solid #ced4da");
   }
 
-  if(value.length == "" || value.length == null){
+  if (value.length == "" || value.length == null) {
     $("#name").css("border", "1px solid #ced4da");
     $("#name").focus();
   }
@@ -26,7 +26,7 @@ function checkEmail(value) {
     $("#email").css("border", "1px solid #ced4da");
   }
 
-  if(value.length == null || value.length ==""){
+  if (value.length == null || value.length == "") {
     $("#email").css("border", "1px solid #ced4da");
     $("#email").focus();
   }
@@ -44,8 +44,19 @@ function checkValidateMobile(input) {
     $("#mobile").focus();
   }
 
-  if(input.length == null || input.length == ""){
+  if (input.length == null || input.length == "") {
     $("#mobile").css("border", "1px solid #ced4da");
     $("#mobile").focus();
   }
 }
+
+$(document).ready(function () {
+  $("#depart_date").click(function(){
+    alert("date")
+  })
+  // $("#depart_date").datepicker({ format: "YYYY-MM-DD" });
+});
+
+// $(function () {
+//   $("#depart_date").datepicker();
+// });
