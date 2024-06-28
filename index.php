@@ -82,7 +82,11 @@ $num = mt_rand(100000, 999999);
     <div class="container">
 
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
-            <h1>Input Data</h1>
+            <div class="row">
+                <div class="col-8">
+                    <h3 class="mb-3 text-center">Input Data</h3>
+                </div>
+            </div>
             <div class="mb-3 row">
                 <div class="col-sm-4">
                     <input class="w-100 form-control" id="name" type="text" name="name" placeholder="Name"
@@ -102,7 +106,8 @@ $num = mt_rand(100000, 999999);
                 </div>
 
                 <div class="col-sm-4">
-                    <select class="w-100 form-control" name="traveler" aria-label="small select example">
+                    <select class="w-100 form-control" name="traveler" aria-label="small select example"
+                        onchange="select_traveler(this.value);" id="total_passenger">
                         <option value="">choose Travelers</option>
                         <option>1</option>
                         <option>2</option>
@@ -113,12 +118,17 @@ $num = mt_rand(100000, 999999);
                         <option>7</option>
                         <option>8</option>
                     </select>
+                    <div class="col-md-12" id="populate_pax_opt"></div>
                 </div>
             </div>
 
 
 
-            <h1>Collection Data</h1>
+            <div class="row">
+                <div class="col-8">
+                    <h3 class="mb-3 text-center">Collection Data</h3>
+                </div>
+            </div>
             <div class="mb-3 row">
                 <div class="col-sm-4">
                     <select class="w-100 form-control" name="regions" aria-label="small select example">
@@ -314,7 +324,7 @@ $num = mt_rand(100000, 999999);
                 timePicker: false,
                 autoUpdateInput: false,
                 minDate: new Date(),
-                maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),// datepicker for 35 months from current months 
+                maxDate: new Date(date.getFullYear(), date.getMonth() + 35, date.getDate()),// datepicker for 35 months from current months 
                 startDate: moment().startOf('hour'),
                 endDate: moment().startOf('hour').add(32, 'hour'),
                 locale: {
@@ -328,7 +338,7 @@ $num = mt_rand(100000, 999999);
                     timePicker: false,
                     autoUpdateInput: false,
                     minDate: new Date(picker.startDate.format('YYYY-MM-DD')),
-                    maxDate: new Date(date.getFullYear(), date.getMonth()+35, date.getDate()),// datepicker for 35 months from current months 
+                    maxDate: new Date(date.getFullYear(), date.getMonth() + 35, date.getDate()),// datepicker for 35 months from current months 
                     startDate: moment().startOf('hour'),
                     endDate: moment().startOf('hour').add(32, 'hour'),
                     locale: {
@@ -369,6 +379,81 @@ $num = mt_rand(100000, 999999);
             });
         });
 
+        //total_passenger
+        function select_traveler(val) {
+            var text;
+            if (val == 1) {
+                text = "1 Adult";
+            } else {
+                text = val + " Adults";
+            }
+            var startingValueInfant = 0;
+            var html_text = `
+            <div class="passenger_rio">
+                <div class='mt-2 pt-2'>` + text + ` Choose: 
+                    <input type="radio" class="radio" value="yes" id="pax_type" name="pax_type"     onclick="pax_travler(&quot;yes&quot;);" style="margin-left:10px;"> Yes
+
+                    <input type="radio" class="radio" value="no" id="pax_type" name="pax_type" onclick="pax_travler(&quot;no&quot;);" style="margin-left:10px;"> No
+                </div> 
+                <span id="pax_travler" style="display:none;">
+                    <div class="d-flex">
+                        <div class="d-grid col-md-4 me-4">Adult
+                            <select class="form-select drop_in" aria-label=".form-select-lg example" id="number_of_adults" name="number_of_adults">                         
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                            </select>
+                        </div>
+                        <div class="d-grid col-md-4 me-4">Child
+                            <select class="form-select drop_in" aria-label=".form-select-lg example" id="number_of_children" name="number_of_children">                                                                                              
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                        <div class="d-grid col-md-4 me-4">Infant
+                            <select class="form-select drop_in" aria-label=".form-select-lg example" id="number_of_infant" name="number_of_infant">                                                                            
+                                
+                                <option value="${startingValueInfant}">${startingValueInfant}</option>
+                            </select>
+                        </div>
+                    </div>
+                </span> 
+            </div>`;
+
+            $('#populate_pax_opt').html(html_text);
+
+            $("#number_of_adults").change(function () {
+                let selectedValue = $(this).val();
+                // console.log(selectedValue);
+                $("#number_of_infant").empty();
+                for (var i = 0; i <= selectedValue; i++) {
+                    $("#number_of_infant").append(
+                        '<option value="' + i + '">' + i + "</option>"
+                    );
+                }
+            });
+        }
+
+        function pax_travler(val) {
+            if (val == "yes") {
+                $("#pax_travler").hide();
+            } else if (val == "no") {
+                $("#pax_travler").show();
+            }
+        }
     </script>
 </body>
 
