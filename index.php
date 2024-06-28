@@ -32,12 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 'regions' => $regions,
                 'cruise_menu' => $cruise_menu,
                 'departure_port' => $departure_port,
+                "return_port" => $return_port,
                 'cruise_ship' => $cruise_ship,
                 'total_night' => $total_night,
                 "visit_place" => $visit_place,
                 "depart_date" => $depart_date,
-                "return_date" => $return_date,
-                "return_port" => $return_port
+                "return_date" => $return_date
             ]
         );
         $client->executeBulkWrite('Tables.details', $insert);
@@ -201,12 +201,13 @@ $num = mt_rand(100000, 999999);
 
             <div class="row">
                 <div class="col-md-3 ">
-                    <button type="submit" class="btn btn-primary btn w-100" name="submit"><i class="fa-regular fa-paper-plane"></i> submit</button>
+                    <button type="submit" class="btn btn-primary btn w-100" id="submit" name="submit"><i
+                            class="fa-regular fa-paper-plane"></i> submit</button>
                 </div>
                 <div class="col-2"></div>
                 <div class="col-md-3">
-                    <button class="btn btn-primary btn w-100" name="deals"><i
-                            class="fa-regular fa-bell"></i> Deals</button>
+                    <button class="btn btn-primary btn w-100" name="deals"><i class="fa-regular fa-bell"></i>
+                        Deals</button>
                 </div>
             </div>
         </form>
@@ -262,17 +263,45 @@ $num = mt_rand(100000, 999999);
             }
         }
 
-        $(document).ready(function () {
-            $('#return_port').click(function () {
-                var depart_ports = $('#Departure_ports').val();
-                var checkbox = $('#return_port');
 
-                if ($(this).is(':checked') && depart_ports !== "") {
-                    checkbox.attr('value', checkbox.attr('value') + ' ' + depart_ports);
-                    console.log("Value updated: " + checkbox.attr('value'));
-                }
-            });
+        $('#submit').click(function () {
+            // e.preventDefault();
+            var depart_ports = $('#Departure_ports').val();
+            var checkbox = $('#return_port');
+
+            if (!checkbox.is(':checked') && depart_ports === "") {
+                console.log("Empty fields");
+            } else if (checkbox.is(':checked') || depart_ports !== "") {
+                console.log("filled");
+                checkbox.attr('value', checkbox.attr('value') + ' ' + depart_ports);
+                console.log("Value updated: " + checkbox.attr('value'));
+            }
         });
+
+        // $(document).ready(function () {
+        //     $('#return_port').click(function () {
+        //         var depart_ports = $('#Departure_ports').val();
+        //         var checkbox = $('#return_port');
+
+        //         if ($(this).is(':checked') || depart_ports !== "") {
+        //             checkbox.attr('value', checkbox.attr('value') + ' ' + depart_ports);
+        //             console.log("Value updated: " + checkbox.attr('value'));
+        //         }
+        //     });
+        // });
+        // $(document).ready(function () {
+        //     var depart_ports = $('#Departure_ports').val();
+        //     var checkbox = $('#return_port');
+
+        //     if (!checkbox.is(':checked') && depart_ports === "") {
+        //         console.log("Empty fields");
+        //     } else if (checkbox.is(':checked') || depart_ports !== "") {
+        //         console.log("filled")
+        //         checkbox.attr('value', depart_ports);
+        //         console.log("Value updated: " + checkbox.attr('value'))
+        //     }
+
+        // });
 
         $(function () {
             $('#depart_date').daterangepicker({
