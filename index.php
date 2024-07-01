@@ -254,6 +254,7 @@ $num = mt_rand(100000, 999999);
 
     <div class="container">
         <div class="row ">
+            <h4 style="color: rgb(55, 101, 175);">Top Cruise Ship</h4>
             <?php
             foreach ($results['cruiseLine'] as $cruise) {
 
@@ -280,80 +281,19 @@ $num = mt_rand(100000, 999999);
                                 <?php } ?>
                             </ul>
                             </p>
-                            <a href="#" class="btn btn-primary" style="width: 100%;border-radius: 25px;"><?php echo $cruise->Ship_name; ?></a>
+                            <a href="#" class="btn btn-primary"
+                                style="width: 100%;border-radius: 25px;font-weight: 600;"><?php echo $cruise->Ship_name; ?></a>
                         </div>
                     </div>
                 </div>
             <?php }
             ?>
+        </div>
 
-
-            <!-- <div class="col-sm-4 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="card1" >
+                <img src="img.jpg" class="card-img-top" alt="..." style="width: 15rem;height: 21rem;border-radius: 10px;">
             </div>
-
-
-            <div class="col-sm-4 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="col-sm-4 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4 mb-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-4 mb-3 ">
-                <div class="card" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the
-                            card's content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-            </div> -->
         </div>
     </div>
 
@@ -394,7 +334,7 @@ $num = mt_rand(100000, 999999);
         }
 
         function checkValidateMobile(input) {
-            // console.log(input)
+            console.log(input)
             // var regex = /^[0-9]*$/;
             var regex = /^[0-9]{10}$/;
             if (!regex.test(input) || input.length > 10) {
@@ -589,12 +529,6 @@ $num = mt_rand(100000, 999999);
 
         //total_passenger
         function select_traveler(val) {
-            //     if (field_id == "primary_pax_name") {
-            //   $("#primary_pax_name2").val(value);
-            // } else if (field_id == "primary_pax_name2") {
-            //   $("#primary_pax_name").val(value);
-            // }
-
             var text;
             if (val == 1) {
                 text = "1 Adult";

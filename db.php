@@ -52,7 +52,7 @@ $departurePorts = $results['departure_ports']->alldepartureports;
 $cruiseShipData = $results['cruiseShip']->cruiseships;
 $nightsData = $results['TotalNights']->numberofnights;
 $visitPlaceData = $results['visitPlace']->placestovisit;
-$topcruiseData = $results['cruiseLine']->topcruiseline;
+$topcruiseData = isset($results['cruiseLine']->topcruiseline);
 
 
 ?>
