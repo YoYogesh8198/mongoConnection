@@ -11,14 +11,15 @@
   font-size: 15px !important;
   font-weight: 400 !important;
 }
-.form-control,.form-check-input:focus {
+.form-control,
+.form-check-input:focus {
   box-shadow: none !important;
 }
-.form-check{
+.form-check {
   margin-left: 10px !important;
 }
-.form-check-input[type=checkbox] {
-  border-radius: .25em;
+.form-check-input[type="checkbox"] {
+  border-radius: 0.25em;
   padding: 13px;
 }
 label {
@@ -29,3 +30,23 @@ label {
   /* justify-content: center; */
   height: 100%;
 }
+.erro_comment {
+  float: right;
+  font-size: 18px;
+  color: red;
+  font-weight: 300;
+  text-align: right;
+  padding-bottom: 0px;
+  width: 100%;
+}
+.erro_comment span {
+  padding: 0 0 10px;
+  float: right;
+}
+/* .valid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: .25rem;
+  font-size: .875em;
+  color: var(--bs-form-valid-color);
+} */

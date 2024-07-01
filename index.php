@@ -1,16 +1,18 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // for warning when warning show on UI
 include 'db.php';
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // var_dump("data");
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['phone'];
     $traveler = $_POST['traveler'];
-    $number_of_adults = $_POST['number_of_adults'];
-    $number_of_children = $_POST['number_of_children'];
-    $number_of_infant = $_POST['number_of_infant'];
+    $number_of_adults = isset($_POST['number_of_adults']) ? $_POST['number_of_adults'] : "";
+    $number_of_children = isset($_POST['number_of_children']) ? $_POST['number_of_children'] : "";
+    $number_of_infant = isset($_POST['number_of_infant']) ? $_POST['number_of_infant'] : "";
     $regions = $_POST['regions'];
     $cruise_menu = $_POST['cruise_menu'];
     $departure_port = $_POST['departure_port'];
@@ -87,7 +89,8 @@ $num = mt_rand(100000, 999999);
 <body>
     <div class="container">
 
-        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" autocomplete="off" class="needs-validation"
+            id="cruiseForm">
             <div class="row">
                 <div class="col-8">
                     <h3 class="mb-3 text-center">Input Data</h3>
@@ -95,23 +98,30 @@ $num = mt_rand(100000, 999999);
             </div>
 
             <div class="mb-3 row">
-                <div class="col-sm-4">
-                    <input class="w-100 form-control mb-3" id="name" type="text" name="name" placeholder="Name"
-                        onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
+                <div class="col-sm-4 mb-3">
+                    <div class="input-group has-validation">
+                        <input class="w-100 form-control " id="name" type="text" name="name" placeholder="Name"
+                            onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
+                        <div class="error_1" style="display:none">
+                        </div>
+                    </div>
                 </div>
+                <!-- <span class="comment" id="comment_1" style="display: none">please Enter your name*</span> -->
 
                 <div class="col-sm-4">
                     <input class="w-100 form-control mb-3" id="email" type="text" name="email" placeholder="Email"
                         aria-label=".form-control-lg example" onkeyup="checkEmail(this.value);">
                 </div>
                 <div class="col-1"></div>
-                <div class="col-sm-4">
-                    <input class="w-100 form-control mb-3" id="mobile" type="tel" name="phone" placeholder="Phone"
+                <div class="col-sm-4 mb-3">
+                    <input class="w-100 form-control " id="mobile" type="tel" name="phone" placeholder="Phone"
                         aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
+                    <div class="error_2" style="display:none">
+                    </div>
                 </div>
 
-                <div class="col-sm-4">
-                    <select class="w-100 form-control mb-3" name="traveler" aria-label="small select example"
+                <div class="col-sm-4 mb-3">
+                    <select class="w-100 form-control " name="traveler" aria-label="small select example"
                         onchange="select_traveler(this.value);" id="total_passenger">
                         <option value="">choose Travelers</option>
                         <option>1</option>
@@ -124,6 +134,8 @@ $num = mt_rand(100000, 999999);
                         <option>8</option>
                     </select>
                     <div class="col-md-12" id="populate_pax_opt"></div>
+                    <div class="error_3" style="display:none">
+                    </div>
                 </div>
             </div>
 
@@ -165,10 +177,11 @@ $num = mt_rand(100000, 999999);
                     </select>
                 </div>
 
-                <div class="form-check col-sm-4 mb-3">
+                <div class="form-check col-sm-4 mb-5">
                     <input class="form-check-input ml-8" type="checkbox" value="" id="return_port" name="return_port">
                     <label class="form-check-label" for="return_port">
                         Return to same port
+                        <div class="error_6" style="display:none"></div>
                     </label>
                 </div>
 
@@ -208,6 +221,7 @@ $num = mt_rand(100000, 999999);
                         <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="depart_date"
                             name="depart_date" autocomplete="off" readonly>
+                        <div class="error_4" style="display:none"></div>
                     </div>
                 </div>
 
@@ -216,14 +230,16 @@ $num = mt_rand(100000, 999999);
                         <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Return Date(Any)" aria-label=".form-control-lg example" id="return_date"
                             name="return_date" autocomplete="off" readonly>
+                        <div class="error_5" style="display:none"></div>
                     </div>
                 </div>
             </div>
             <input type="hidden" name="uniqueId" value="<?php echo $num; ?>" />
 
+
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <button type="submit" class="btn btn-primary btn w-100" id="submit" name="submit"><i
+                    <button type="submit" class="btn btn-primary btn w-100 btnSubmit" id="submit1" name="submit1"><i
                             class="fa-regular fa-paper-plane"></i> submit</button>
                 </div>
                 <div class="col-2"></div>
@@ -238,6 +254,9 @@ $num = mt_rand(100000, 999999);
     <!-- //*script -->
 
     <script>
+
+
+
         function show_name(value) {
             //   console.log(value);
             var nameRegex =
@@ -287,44 +306,118 @@ $num = mt_rand(100000, 999999);
         }
 
 
-        $('#submit').click(function () {
-            // e.preventDefault();
-            var depart_ports = $('#Departure_ports').val();
-            var checkbox = $('#return_port');
 
-            if (!checkbox.is(':checked') && depart_ports == "" || depart_ports == 'undefined' || depart_ports == null) {
-                console.log("Empty fields");
-            } else if (checkbox.is(':checked') || depart_ports !== "") {
-                console.log("filled");
-                checkbox.attr('value', checkbox.attr('value') + ' ' + depart_ports);
-                console.log("Value updated: " + checkbox.attr('value'));
-            }
-        });
 
-        // $(document).ready(function () {
-        //     $('#return_port').click(function () {
-        //         var depart_ports = $('#Departure_ports').val();
-        //         var checkbox = $('#return_port');
+        $(document).ready(function () {
+            $('#submit1').click(function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var name = $("#name").val();
+                var phone_number = $("#mobile").val();
+                var phone_length = $("#mobile").val().length;
+                var total_passenger = $("#total_passenger").val();
+                var pax_type = $('input[name=pax_type]:checked').val()
+                var depart_date = $('#depart_date').val();
+                var return_date = $('#return_date').val();
+                var depart_ports = $('#Departure_ports').val();
+                var checkbox = $('#return_port');
+                var ErrorMsg = false;
 
-        //         if ($(this).is(':checked') || depart_ports !== "") {
-        //             checkbox.attr('value', checkbox.attr('value') + ' ' + depart_ports);
-        //             console.log("Value updated: " + checkbox.attr('value'));
-        //         }
-        //     });
-        // });
-        // $(document).ready(function () {
-        //     var depart_ports = $('#Departure_ports').val();
-        //     var checkbox = $('#return_port');
+                if (name == "" || name == null || name == undefined) {
+                    $(".error_1").addClass("invalid-feedback");
+                    $(".error_1").html("Please enter your name");
+                    $(".error_1").show();
+                    ErrorMsg = true;
+                } else {
+                    $(".error_1").hide();
+                }
 
-        //     if (!checkbox.is(':checked') && depart_ports === "") {
-        //         console.log("Empty fields");
-        //     } else if (checkbox.is(':checked') || depart_ports !== "") {
-        //         console.log("filled")
-        //         checkbox.attr('value', depart_ports);
-        //         console.log("Value updated: " + checkbox.attr('value'))
-        //     }
 
-        // });
+                // * phone
+                if (phone_number == "" || phone_number == undefined || phone_number == null) {
+                    $(".error_2").addClass("invalid-feedback");
+                    $('.error_2').html("Please Fill your Mobile Number*");
+                    $('.error_2').show();
+                    ErrorMsg = true;
+                } else if (phone_length != 10) {
+                    $(".error_2").addClass("invalid-feedback");
+                    $('.error_2').html("please enter 10 digit*");
+                    $('.error_2').show();
+                    ErrorMsg = true;
+                }
+                else {
+                    $(".error_2").hide();
+                }
+
+                //* traveler
+                if (total_passenger == "" || total_passenger == null || total_passenger == undefined) {
+                    $(".error_3").addClass("invalid-feedback");
+                    $('.error_3').html("Please Fill your Total Passenger*");
+                    $('.error_3').show();
+                    ErrorMsg = true;
+                }
+                else if (
+                    total_passenger !== "" && total_passenger !== null && (
+                        pax_type == null || pax_type == "" || pax_type == undefined)
+                ) {
+                    $(".error_3").addClass("invalid-feedback");
+                    $('.error_3').html("Error: Please choose the option below.*");
+                    $('.error_3').show();
+                    ErrorMsg = true;
+                } else {
+                    $(".error_3").hide();
+                }
+
+                //* return and depart date
+                if (depart_date == "" || depart_date == null || depart_date == undefined) {
+                    $(".error_4").addClass("invalid-feedback");
+                    $('.error_4').html("Please Fill your Departure Date*");
+                    $('.error_4').show();
+                    ErrorMsg = true;
+                } else {
+                    $(".error_4").hide();
+                }
+
+                if (return_date == "" || return_date == null || return_date == undefined) {
+                    $(".error_5").addClass("invalid-feedback");
+                    $('.error_5').html("Please Fill your Return Date*");
+                    $('.error_5').show();
+                    ErrorMsg = true;
+                } else if (depart_date == return_date) {
+                    $(".error_5").addClass("invalid-feedback");
+                    $('.error_5').html("Departure Date and Return Date cannot be same*");
+                    ErrorMsg = true;
+                }
+                else {
+                    $(".error_5").hide();
+                }
+
+
+                if (!checkbox.is(':checked') && (depart_ports == "" || depart_ports == undefined || depart_ports == null)) {
+                    // $(".error_6").addClass("invalid-feedback");
+                    // $('.error_6').html("please choose the depart ports*");
+                    // $('.error_6').show();
+                    // ErrorMsg = true;
+
+                } else if (checkbox.is(':checked') || depart_ports !== "") {
+                    // console.log("Filled");
+                    if (depart_ports !== "") {
+                        checkbox.val(checkbox.val() + ' ' + depart_ports);
+                        console.log("Value updated: " + checkbox.val());
+                    }
+                } else {
+                    $('.error_6').hide();
+                }
+
+
+                if (!ErrorMsg) {
+                    $("#cruiseForm").submit()
+                }
+
+            });
+        })
+
+
 
         $(function () {
             var date = new Date();
@@ -390,6 +483,12 @@ $num = mt_rand(100000, 999999);
 
         //total_passenger
         function select_traveler(val) {
+            //     if (field_id == "primary_pax_name") {
+            //   $("#primary_pax_name2").val(value);
+            // } else if (field_id == "primary_pax_name2") {
+            //   $("#primary_pax_name").val(value);
+            // }
+            
             var text;
             if (val == 1) {
                 text = "1 Adult";
@@ -400,8 +499,8 @@ $num = mt_rand(100000, 999999);
             var html_text = `
             <div class="passenger_rio">
                 <div class='mt-2 pt-2'>` + text + ` Choose: 
-                    <input type="radio" class="radio" value="yes" id="pax_type" name="pax_type"     onclick="pax_travler(&quot;yes&quot;);" style="margin-left:10px;"> Yes
-                    <input type="radio" class="radio" value="no" id="pax_type" name="pax_type" onclick="pax_travler(&quot;no&quot;);" style="margin-left:10px;"> No
+                    <input type="radio" class="radio" value="yes"  name="pax_type"  onclick="pax_travler(&quot;yes&quot;);" style="margin-left:10px;"> Yes
+                    <input type="radio" class="radio" value="no"  name="pax_type" onclick="pax_travler(&quot;no&quot;);" style="margin-left:10px;"> No
                 </div> 
                 <span id="pax_travler" style="display:none;">
                     <div class="d-flex">
@@ -456,12 +555,17 @@ $num = mt_rand(100000, 999999);
         }
 
         function pax_travler(val) {
+            var totalpass = $("#total_passenger").val()
+            // console.log(totalpass)
             if (val == "yes") {
+                $("#number_of_adults").val(totalpass)
+                // console.log(totalpass,"yes")
                 $("#pax_travler").hide();
             } else if (val == "no") {
                 $("#pax_travler").show();
             }
         }
+       
     </script>
 </body>
 
