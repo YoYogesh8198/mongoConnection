@@ -30,7 +30,7 @@ label {
   /* justify-content: center; */
   height: 100%;
 }
-.erro_comment {
+/* .erro_comment {
   float: right;
   font-size: 18px;
   color: red;
@@ -42,7 +42,7 @@ label {
 .erro_comment span {
   padding: 0 0 10px;
   float: right;
-}
+} */
 /* .valid-feedback {
   display: none;
   width: 100%;
