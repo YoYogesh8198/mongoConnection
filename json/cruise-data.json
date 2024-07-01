@@ -19,7 +19,7 @@
         ],
         "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_price": "$124"
+        "ship_price": "$134"
     },
     {
         "Ship_name": "Norwegian Cruise",
@@ -30,7 +30,7 @@
         ],
         "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_price": "$124"
+        "ship_price": "$724"
     },
     {
         "Ship_name": "Holland America Line",
@@ -41,7 +41,7 @@
         ],
         "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_price": "$124"
+        "ship_price": "$355"
     },
     {
         "Ship_name": "Princess Cruise",
@@ -52,7 +52,7 @@
         ],
         "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_price": "$124"
+        "ship_price": "$512"
     },
     {
         "Ship_name": "Celebrity Cruise",
@@ -63,6 +63,6 @@
         ],
         "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_price": "$124"
+        "ship_price": "$333"
     }
 ]

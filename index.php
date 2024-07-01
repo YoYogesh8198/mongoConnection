@@ -259,27 +259,28 @@ $num = mt_rand(100000, 999999);
 
                 ?>
                 <div class="col-md-4 mb-3">
-                    <div class="card" >
+                    <div class="card">
                         <!-- <img src="<?php //echo $cruise->ship_image; ?>" class="card-img-top" alt="..."> -->
-                         <img src="img.jpg" alt="" class="card-img-top">
+                        <img src="img.jpg" alt="" class="card-img-top">
                         <div class="card-body">
-                            <!-- <h5 class="card-title"><?php// echo $cruise->Ship_name; ?></h5> -->
-                             <div class="col-6" style="display: inline-block;">
-                                 <img src="logo.png" alt="" style="height:50px;width:150px;">
-                             </div>
-                             <div class="col-4" style="display: inline-block;text-align: right;">
+                            <!-- <h5 class="card-title"><? php// echo $cruise->Ship_name; ?></h5> -->
+                            <div class="col-6" style="display: inline-block;">
+                                <img src="logo.png" alt="" style="height:50px;width:150px;">
+                            </div>
+                            <div class="col-4" style="display: inline-block;text-align: right;">
                                 <span style="font-size: 10px;">From</span>
-                                <p style="font-weight: 900;color: green;font-size: 20px;"><?php echo $cruise->ship_price; ?></p>
+                                <p style="font-weight: 900;color: green;font-size: 20px;"><?php echo $cruise->ship_price; ?>
+                                </p>
 
-                             </div>
+                            </div>
                             <p class="card-text">
                             <ul style="min-height:150px">
                                 <?php foreach ($cruise->Ship_desription as $description) { ?>
-                                    <li><?php echo $description ?></li>
+                                    <li style="font-size: 14px;"><?php echo $description ?></li>
                                 <?php } ?>
                             </ul>
                             </p>
-                            <a href="#" class="btn btn-primary"><?php echo $cruise->Ship_name; ?></a>
+                            <a href="#" class="btn btn-primary" style="width: 100%;border-radius: 25px;"><?php echo $cruise->Ship_name; ?></a>
                         </div>
                     </div>
                 </div>
