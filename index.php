@@ -291,8 +291,9 @@ $num = mt_rand(100000, 999999);
         </div>
 
         <div class="row">
-            <div class="card1" >
-                <img src="img.jpg" class="card-img-top" alt="..." style="width: 15rem;height: 21rem;border-radius: 10px;">
+            <div class="card1">
+                <img src="img.jpg" class="card-img-top" alt="..."
+                    style="width: 15rem;height: 21rem;border-radius: 10px;">
             </div>
         </div>
     </div>
@@ -377,6 +378,13 @@ $num = mt_rand(100000, 999999);
                 } else {
                     $(".error_1").hide();
                 }
+
+                //              //*Email
+                // if (email_length != 0 && emailRegex.test(email) == false) {
+                //   $(".error_2").show();
+                // } else {
+                //   $(".error_2").hide();
+                // }
 
 
                 // * phone
@@ -572,7 +580,6 @@ $num = mt_rand(100000, 999999);
                         </div>
                         <div class="d-grid col-md-4 me-4">Infant
                             <select class="form-select drop_in" aria-label=".form-select-lg example" id="number_of_infant" name="number_of_infant">                                                                            
-                                
                                 <option value="${startingValueInfant}">${startingValueInfant}</option>
                             </select>
                         </div>
