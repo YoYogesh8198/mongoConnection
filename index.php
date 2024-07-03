@@ -261,8 +261,8 @@ $num = mt_rand(100000, 999999);
                 ?>
                 <div class="col-md-4 mb-3">
                     <div class="card">
-                        <!-- <img src="<?php //echo $cruise->ship_image; ?>" class="card-img-top" alt="..."> -->
-                        <img src="img.jpg" alt="" class="card-img-top">
+                        <img src="<?php echo $cruise->ship_image; ?>" class="card-img-top" alt="...">
+                        <!-- <img src="img.jpg" alt="" class="card-img-top"> -->
                         <div class="card-body">
                             <!-- <h5 class="card-title"><? php// echo $cruise->Ship_name; ?></h5> -->
                             <div class="col-6" style="display: inline-block;">
@@ -277,7 +277,10 @@ $num = mt_rand(100000, 999999);
                             <p class="card-text">
                             <ul style="min-height:150px">
                                 <?php foreach ($cruise->Ship_desription as $description) { ?>
-                                    <li style="font-size: 14px;"><?php echo $description ?></li>
+                                    <li style="font-size: 14px;">
+                                        <h5><?php echo $description->title ?></h5>
+                                        <p><?php echo $description->text ?></p>
+                                    </li>
                                 <?php } ?>
                             </ul>
                             </p>
@@ -289,14 +292,45 @@ $num = mt_rand(100000, 999999);
             <?php }
             ?>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="card1">
-                <img src="img.jpg" class="card-img-top" alt="..."
-                    style="width: 15rem;height: 21rem;border-radius: 10px;">
-            </div>
+
+    <div class="container">
+        <div class="row ">
+            <h4 style="color: rgb(55, 101, 175);">Top Cruise Ship</h4>
+            <?php
+            foreach ($results['popularCruiseLine'] as $popularCruise) {
+                ?>
+                <div class="col-lg-2 mb-3">
+                    <div class="card">
+                        <img src="<?php echo $popularCruise->img; ?>" style="height: 300px;" class="card-img-top " alt="...">
+                        <h3 class="popular-title"><?php echo $popularCruise->title; ?></>
+                    </div>
+                </div>
+            <?php }
+            ?>
         </div>
     </div>
+
+
+    <div class="container">
+        <div class="row ">
+            <h4 style="color: rgb(55, 101, 175);">Best Departs Ports</h4>
+            <?php
+            foreach ($results['bestDepartPortsLine'] as $bestDepartData) {
+                ?>
+                <div class="col-lg-2 mb-3">
+                    <div class="card">
+                        <img src="<?php echo $bestDepartData->img; ?>" style="height: 300px;" class="card-img-top " alt="...">
+                        <h3 class="popular-title1"><?php echo $bestDepartData->title; ?></h3>
+                        <p class="best-text"><?php echo $bestDepartData->text; ?></p>
+                    </div>
+                </div>
+            <?php }
+            ?>
+        </div>
+    </div>
+
 
     <!-- //*script -->
 

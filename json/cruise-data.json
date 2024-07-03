@@ -2,67 +2,121 @@
     {
         "Ship_name": "Carnival Cruise Line",
         "Ship_desription": [
-            "Our Carnival Exclusive: Up to $75 to Spend on Board",
-            "Early Saver Sale : Up to 40% Savings + $50 to Spend on Board",
-            "Military Bonus : Limited-Time Reduced Rates"
+            {
+                "title": "Our Carnival Exclusive",
+                "text": "Up to $75 to Spend on Board"
+            },
+            {
+                "title": "Early Saver Sale",
+                "text": "Up to 40% Savings + $50 to Spend on Board"
+            },
+            {
+                "title": "Military Bonus",
+                "text": "Limited-Time Reduced Rates"
+            }
         ],
-        "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ship_logo": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ship_image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "ship_price": "$124"
     },
     {
         "Ship_name": "Royal Caribbean",
         "Ship_desription": [
-            "Our Royal Exclusive: Free Specialty Dinner for 2",
-            "Our Royal Exclusive: Up to $100 to Spend on Board",
-            "Buzzer Beater: Up to $550 Instant Savings"
+            {
+                "title": "Our Royal Exclusive",
+                "text": "Free Specialty Dinner for 2"
+            },
+            {
+                "title": "Our Royal Exclusive",
+                "text": "Up to $100 to Spend on Board"
+            },
+            {
+                "title": "Buzzer Beater",
+                "text": "Up to $550 Instant Savings"
+            }
         ],
-        "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ship_logo": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ship_image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "ship_price": "$134"
     },
     {
         "Ship_name": "Norwegian Cruise",
         "Ship_desription": [
-            "Our Norwegian Exclusive: Up to to $200 to Spend on Board",
-            "Father's Day Sale : 35% Off All Cruises+ All the Free at Sea Offers(Like Free Drinks)",
-            "Military Bonus: 10% Savings"
+            {
+                "title": "Our Norwegian Exclusive",
+                "text": "Up to to $200 to Spend on Board"
+            },
+            {
+                "title": "Father's Day Sale",
+                "text": "35% Off All Cruises+ All the Free at Sea Offers(Like Free Drinks)"
+            },
+            {
+                "title": "Military Bonus",
+                "text": "10% Savings"
+            }
         ],
-        "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ship_logo": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ship_image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "ship_price": "$724"
     },
     {
         "Ship_name": "Holland America Line",
         "Ship_desription": [
-            "Our Holland America Exclusive: Gratuities Included for 2",
-            "Our Holland America Exclusive: Up to $150 to Spend on Board",
-            "Summer Savings Event: Up to 40% Savings, $100 to Spend on Board & More"
+            {
+                "title": "Our Holland America Exclusive",
+                "text": "Gratuities Included for 2"
+            },
+            {
+                "title": "Our Holland America Exclusive",
+                "text": "Up to $150 to Spend on Board"
+            },
+            {
+                "title": "Summer Savings Event",
+                "text": "Up to 40% Savings, $100 to Spend on Board & More"
+            }
         ],
-        "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ship_logo": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ship_image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "ship_price": "$355"
     },
     {
         "Ship_name": "Princess Cruise",
         "Ship_desription": [
-            "Our Princess Exclusive: Up to $100 to Spend on Board",
-            "Limited-Time Offer: Up to 35% Off, Free Upgrades & More",
-            "Limited-Time Offer: Up to 35% Off + 3rd & 4th Guests Sail Free"
+            {
+                "title": "Our Princess Exclusive",
+                "text": "Up to $100 to Spend on Board"
+            },
+            {
+                "title": "Limited-Time Offer",
+                "text": "Up to 35% Off, Free Upgrades & More"
+            },
+            {
+                "title": "Limited-Time Offer",
+                "text": "Up to 35% Off + 3rd & 4th Guests Sail Free"
+            }
         ],
-        "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ship_logo": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ship_image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "ship_price": "$512"
     },
     {
         "Ship_name": "Celebrity Cruise",
         "Ship_desription": [
-            "Our Celebrity Exclusive: Drinks, Wi-Fi & Gratuities Included",
-            "Our Celebrity Exclusive: Up to $150 to Spend on Board",
-            "Limited-Time offer: up to 75% Off 2nd Guests + 3rd, 4th & 5th Guests Sail Free"
+            {
+                "title": "Our Celebrity Exclusive",
+                "text": "Drinks, Wi-Fi & Gratuities Included"
+            },
+            {
+                "title": "Our Celebrity Exclusive",
+                "text": "Up to $150 to Spend on Board"
+            },
+            {
+                "title": "Limited-Time offer",
+                "text": "up to 75% Off 2nd Guests + 3rd, 4th & 5th Guests Sail Free"
+            }
         ],
-        "ship_logo": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "ship_image": "https://images.unsplash.com/photo-1483192683197-083ca7511846?q=80&w=1896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ship_logo": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "ship_image": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "ship_price": "$333"
     }
 ]

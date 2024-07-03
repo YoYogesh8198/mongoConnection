@@ -29,7 +29,21 @@ label {
   align-items: center;
   /* justify-content: center; */
   height: 100%;
-  
+}
+.popular-title {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+.popular-title1 {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+.best-text {
+  position: absolute;
+  top: 20%;
+  left: 10%;
 }
 /* .erro_comment {
   float: right;
