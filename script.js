@@ -57,6 +57,6 @@ $(document).ready(function () {
   // $("#depart_date").datepicker({ format: "YYYY-MM-DD" });
 });
 
-// $(function () {
-//   $("#depart_date").datepicker();
-// });
+function select_cruiseLine(value){
+  console.log(value);
+}

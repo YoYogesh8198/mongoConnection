@@ -157,10 +157,13 @@ $num = mt_rand(100000, 999999);
                 </div>
 
                 <div class="col-sm-4">
-                    <select class="w-100 form-control mb-3" name="cruise_menu" aria-label="small select example">
+                    <select class="w-100 form-control mb-3" name="cruise_menu" aria-label="small select example"
+                        onchange="select_cruiseLine(this.value);">
                         <option value="">cruise Lines(Any)</option>
-                        <?php foreach ($cruiseData as $cruise): ?>
-                            <option value="<?php echo $cruise; ?>"><?php echo $cruise; ?></option>
+                        <?php foreach ($results['cruiseshipLineData'] as $cruiseshipLineData): ?>
+                            <option value="<?php echo $cruiseshipLineData->cruisename; ?>">
+                                <?php echo $cruiseshipLineData->cruisename; ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -188,8 +191,15 @@ $num = mt_rand(100000, 999999);
                 <div class="col-sm-8">
                     <select class="w-100 mb-3 form-control" name="cruise_ship" aria-label="small select example">
                         <option value="">cruise ships (Any)</option>
-                        <?php foreach ($cruiseShipData as $shipData): ?>
-                            <option value="<?php echo $shipData; ?>"><?php echo $shipData; ?></option>
+                        <?php foreach ($results['cruiseshipLineData'] as $cruiseshipLineData): ?>
+                            <?php foreach ($cruiseshipLineData->cruiseShips as $cruiseShips): ?>
+                                <option value="<?php echo $cruiseShips->shipname; ?>">
+                                    <?php
+                                    echo $cruiseShips->shipname; ?>
+                                </option>
+
+                            <?php endforeach; ?>
+
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -264,7 +274,7 @@ $num = mt_rand(100000, 999999);
                         <img src="<?php echo $cruise->ship_image; ?>" class="card-img-top" alt="...">
                         <!-- <img src="img.jpg" alt="" class="card-img-top"> -->
                         <div class="card-body">
-                            <!-- <h5 class="card-title"><? php// echo $cruise->Ship_name; ?></h5> -->
+                            <!-- <h5 class="card-title"><?php echo $cruise->Ship_name; ?></h5> -->
                             <div class="col-6" style="display: inline-block;">
                                 <img src="logo.png" alt="" style="height:50px;width:150px;">
                             </div>
@@ -303,7 +313,8 @@ $num = mt_rand(100000, 999999);
                 ?>
                 <div class="col-lg-2 mb-3">
                     <div class="card">
-                        <img src="<?php echo $popularCruise->img; ?>" style="height: 300px;" class="card-img-top " alt="...">
+                        <img src="<?php echo $popularCruise->img; ?>" style="height: 300px;" class="card-img-top "
+                            alt="...">
                         <h3 class="popular-title"><?php echo $popularCruise->title; ?></>
                     </div>
                 </div>
@@ -321,10 +332,26 @@ $num = mt_rand(100000, 999999);
                 ?>
                 <div class="col-lg-2 mb-3">
                     <div class="card">
-                        <img src="<?php echo $bestDepartData->img; ?>" style="height: 300px;" class="card-img-top " alt="...">
+                        <img src="<?php echo $bestDepartData->img; ?>" style="height: 300px;" class="card-img-top "
+                            alt="...">
                         <h3 class="popular-title1"><?php echo $bestDepartData->title; ?></h3>
                         <p class="best-text"><?php echo $bestDepartData->text; ?></p>
                     </div>
+                </div>
+            <?php }
+            ?>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h4 style="color: rgb(55, 101, 175);">Find the Best Cruise for you</h4>
+            <?php
+            foreach ($results['findbest'] as $findbest) {
+                ?>
+                <div class="text-wrap ">
+                    <h3><?php echo $findbest->question; ?></h3>
+                    <p><?php echo $findbest->answer; ?></p>
                 </div>
             <?php }
             ?>
@@ -386,7 +413,9 @@ $num = mt_rand(100000, 999999);
             }
         }
 
-
+        function select_cruiseLine(value) {
+            
+        }
 
 
         $(document).ready(function () {
