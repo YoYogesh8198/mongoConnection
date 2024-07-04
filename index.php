@@ -366,57 +366,57 @@ $num = mt_rand(100000, 999999);
 
         $(document).ready(function () {
 
+            // $("#cruise_menu").change(function () {
+            //     var cruisedata = <?php //echo json_encode($results['cruiseshipLineData']) ?>;
+            //     // console.log(cruisedata);
+            //     $("#cruise_ship").empty();
+            //     for (key in cruisedata) {
+            //         if ($("#cruise_menu").val() == "") {
+            //             var cruiseship_a = cruisedata[key]['cruiseShips']
+
+            //             $("#cruise_ship").append('<option value="" selected>cruise ships (Any)</option>')
+            //             for (val of cruiseship_a) {
+            //                 $("#cruise_ship").append(
+            //                     '<option value="' + val['shipname'] + '">' + val['shipname'] + "</option>"
+            //                 );
+            //             }
+            //         } else {
+            //             if (cruisedata[key].cruisename == $("#cruise_menu").val()) {
+            //                 var cruiseship_a = cruisedata[key]['cruiseShips']
+            //                 $("#cruise_ship").empty()
+            //                 $("#cruise_ship").append('<option value="" selected>cruise ships (Any)</option>')
+            //                 for (val of cruiseship_a) {
+            //                     $("#cruise_ship").append(
+            //                         '<option value="' + val['shipname'] + '">' + val['shipname'] + "</option>"
+            //                     );
+            //                 }
+            //             }
+            //         }
+
+            //     }
+            //     // var selectedValue = $(this).val();
+            //     // var selectedText = $(this).find("option:selected").text();
+
+            // });
+
             $("#cruise_menu").change(function () {
                 var cruisedata = <?php echo json_encode($results['cruiseshipLineData']) ?>;
-                // console.log(cruisedata);
+
+                var selectedCruise = $(this).val();
                 $("#cruise_ship").empty();
-                for (key in cruisedata) {
-                    if ($("#cruise_menu").val() == "") {
-                        var cruiseship_a = cruisedata[key]['cruiseShips']
-                        
-                        $("#cruise_ship").append('<option value="" selected>cruise ships (Any)</option>')
-                        for (val of cruiseship_a) {
-                            $("#cruise_ship").append(
-                                '<option value="' + val['shipname'] + '">' + val['shipname'] + "</option>"
-                            );
-                        }
-                    } else {
-                        if (cruisedata[key].cruisename == $("#cruise_menu").val()) {
-                            var cruiseship_a = cruisedata[key]['cruiseShips']
-                            $("#cruise_ship").empty()
-                            $("#cruise_ship").append('<option value="" selected>cruise ships (Any)</option>')
-                            for (val of cruiseship_a) {
-                                $("#cruise_ship").append(
-                                    '<option value="' + val['shipname'] + '">' + val['shipname'] + "</option>"
-                                );
-                            }
-                        }
-                    }
 
+                var selectedCruiseData = cruisedata.find(function (cruise) {
+                    return cruise.cruisename === selectedCruise;
+                });
+                $("#cruise_ship").append('<option value="" selected>cruise ships (Any)</option>')
+                if (selectedCruiseData) {
+                    selectedCruiseData.cruiseShips.forEach(function (ship) {
+                        $("#cruise_ship").append(
+                            '<option value="' + ship.shipname + '">' + ship.shipname + "</option>"
+                        );
+                    });
                 }
-                // var selectedValue = $(this).val();
-                // var selectedText = $(this).find("option:selected").text();
-                
             });
-
-            // $("#cruise_menu").change(function () {
-            //     var cruisedata = <?php echo json_encode($results['cruiseshipLineData']) ?>;
-
-            //     var selectedCruise = $(this).val();
-            //     $("#cruise_ship").empty(); 
-
-            //     var selectedCruiseData = cruisedata.find(function (cruise) {
-            //         return cruise.cruisename === selectedCruise;
-            //     });
-
-            //     if (selectedCruiseData) {
-            //         selectedCruiseData.cruiseShips.forEach(function (ship) {
-            //             $("#cruise_ship").append(
-            //                 '<option value="' + ship.shipname + '">' + ship.shipname + "</option>"
-            //             );
-            //         });
-            //     }
-            // });
 
         });
 
