@@ -157,8 +157,8 @@ $num = mt_rand(100000, 999999);
                 </div>
 
                 <div class="col-sm-4">
-                    <select class="w-100 form-control mb-3" name="cruise_menu" aria-label="small select example"
-                        onchange="select_cruiseLine(this.value);">
+                    <select class="w-100 form-control mb-3" name="cruise_menu" id="cruise_menu"
+                        aria-label="small select example">
                         <option value="">cruise Lines(Any)</option>
                         <?php foreach ($results['cruiseshipLineData'] as $cruiseshipLineData): ?>
                             <option value="<?php echo $cruiseshipLineData->cruisename; ?>">
@@ -189,8 +189,9 @@ $num = mt_rand(100000, 999999);
                 </div>
 
                 <div class="col-sm-8">
-                    <select class="w-100 mb-3 form-control" name="cruise_ship" aria-label="small select example">
-                        <option value="">cruise ships (Any)</option>
+                    <select class="w-100 mb-3 form-control" name="cruise_ship" id="cruise_ship"
+                        aria-label="small select example">
+                        <option value="" selected>cruise ships (Any)</option>
                         <?php foreach ($results['cruiseshipLineData'] as $cruiseshipLineData): ?>
                             <?php foreach ($cruiseshipLineData->cruiseShips as $cruiseShips): ?>
                                 <option value="<?php echo $cruiseShips->shipname; ?>">
@@ -363,7 +364,61 @@ $num = mt_rand(100000, 999999);
 
     <script>
 
+        $(document).ready(function () {
 
+            $("#cruise_menu").change(function () {
+                var cruisedata = <?php echo json_encode($results['cruiseshipLineData']) ?>;
+                // console.log(cruisedata);
+                $("#cruise_ship").empty();
+                for (key in cruisedata) {
+                    if ($("#cruise_menu").val() == "") {
+                        var cruiseship_a = cruisedata[key]['cruiseShips']
+                        
+                        $("#cruise_ship").append('<option value="" selected>cruise ships (Any)</option>')
+                        for (val of cruiseship_a) {
+                            $("#cruise_ship").append(
+                                '<option value="' + val['shipname'] + '">' + val['shipname'] + "</option>"
+                            );
+                        }
+                    } else {
+                        if (cruisedata[key].cruisename == $("#cruise_menu").val()) {
+                            var cruiseship_a = cruisedata[key]['cruiseShips']
+                            $("#cruise_ship").empty()
+                            $("#cruise_ship").append('<option value="" selected>cruise ships (Any)</option>')
+                            for (val of cruiseship_a) {
+                                $("#cruise_ship").append(
+                                    '<option value="' + val['shipname'] + '">' + val['shipname'] + "</option>"
+                                );
+                            }
+                        }
+                    }
+
+                }
+                // var selectedValue = $(this).val();
+                // var selectedText = $(this).find("option:selected").text();
+                
+            });
+
+            // $("#cruise_menu").change(function () {
+            //     var cruisedata = <?php echo json_encode($results['cruiseshipLineData']) ?>;
+
+            //     var selectedCruise = $(this).val();
+            //     $("#cruise_ship").empty(); 
+
+            //     var selectedCruiseData = cruisedata.find(function (cruise) {
+            //         return cruise.cruisename === selectedCruise;
+            //     });
+
+            //     if (selectedCruiseData) {
+            //         selectedCruiseData.cruiseShips.forEach(function (ship) {
+            //             $("#cruise_ship").append(
+            //                 '<option value="' + ship.shipname + '">' + ship.shipname + "</option>"
+            //             );
+            //         });
+            //     }
+            // });
+
+        });
 
 
 
@@ -415,8 +470,21 @@ $num = mt_rand(100000, 999999);
             }
         }
 
-        function select_cruiseLine(value) {
-            console.log(value);
+        function select_cruiseLine(value, id) {
+            console.log(value, id);
+            // function getKeyByValue(object, value) {
+            //     return Object.keys(object).find(key =>
+            //         object[key] === value);
+            // }
+
+            // const exampleObject = {
+            //     key1: 'Geeks',
+            //     key2: 100,
+            //     key3: 'Javascript'
+            // };
+
+            // ans = getKeyByValue(exampleObject, 'Geeks');
+            // console.log(ans);
         }
 
 
