@@ -62,7 +62,7 @@ $cruiseShipData = $results['cruiseShip']->cruiseships;
 $nightsData = $results['TotalNights']->numberofnights;
 $visitPlaceData = $results['visitPlace']->placestovisit;
 $topcruiseData = isset($results['cruiseLine']->topcruiseline);
-
-
+$popularCruiseData = isset($results['popularCruiseLine']->popularcruise);
+$bestDepartPortsData = isset($results['bestDepartPortsLine']->bestDepartsports);
 
 ?>
