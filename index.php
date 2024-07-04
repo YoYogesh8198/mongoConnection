@@ -365,6 +365,8 @@ $num = mt_rand(100000, 999999);
 
 
 
+
+
         function show_name(value) {
             //   console.log(value);
             var nameRegex =
@@ -414,7 +416,7 @@ $num = mt_rand(100000, 999999);
         }
 
         function select_cruiseLine(value) {
-            
+            console.log(value);
         }
 
 
@@ -438,6 +440,7 @@ $num = mt_rand(100000, 999999);
                     $(".error_1").html("Please enter your name");
                     $(".error_1").show();
                     ErrorMsg = true;
+                    return false;
                 } else {
                     $(".error_1").hide();
                 }
@@ -456,11 +459,13 @@ $num = mt_rand(100000, 999999);
                     $('.error_2').html("Please Fill your Mobile Number*");
                     $('.error_2').show();
                     ErrorMsg = true;
+                    return false;
                 } else if (phone_length != 10) {
                     $(".error_2").addClass("invalid-feedback");
                     $('.error_2').html("please enter 10 digit*");
                     $('.error_2').show();
                     ErrorMsg = true;
+                    return false;
                 }
                 else {
                     $(".error_2").hide();
@@ -472,6 +477,7 @@ $num = mt_rand(100000, 999999);
                     $('.error_3').html("Please Fill your Total Passenger*");
                     $('.error_3').show();
                     ErrorMsg = true;
+                    return false;
                 }
                 else if (
                     total_passenger !== "" && total_passenger !== null && (
@@ -481,6 +487,7 @@ $num = mt_rand(100000, 999999);
                     $('.error_3').html("Error: Please choose the option below.*");
                     $('.error_3').show();
                     ErrorMsg = true;
+                    return false;
                 } else {
                     $(".error_3").hide();
                 }
@@ -491,6 +498,7 @@ $num = mt_rand(100000, 999999);
                     $('.error_4').html("Please Fill your Departure Date*");
                     $('.error_4').show();
                     ErrorMsg = true;
+                    return false;
                 } else {
                     $(".error_4").hide();
                 }
@@ -500,10 +508,12 @@ $num = mt_rand(100000, 999999);
                     $('.error_5').html("Please Fill your Return Date*");
                     $('.error_5').show();
                     ErrorMsg = true;
+                    return false;
                 } else if (depart_date == return_date) {
                     $(".error_5").addClass("invalid-feedback");
                     $('.error_5').html("Departure Date and Return Date cannot be same*");
                     ErrorMsg = true;
+                    return false;
                 }
                 else {
                     $(".error_5").hide();
