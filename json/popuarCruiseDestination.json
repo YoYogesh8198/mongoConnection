@@ -1,26 +1,30 @@
 [
     {
-        "img": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "Goa"
+        "img": "https://i.ibb.co/r095bDp/scroll-img1.jpg",
+        "title": "Bahamas"
     },
     {
-        "img": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "simla"
+        "img": "https://i.ibb.co/9w1k180/scroll-img2.jpg",
+        "title": "Mexico"
     },
     {
-        "img": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "malesia"
+        "img": "https://i.ibb.co/dg5ZQhD/scroll-img3.jpg",
+        "title": "Hawai"
     },
     {
-        "img": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "tamilnadu"
+        "img": "https://i.ibb.co/Kqfd3JT/scroll-img4.jpg",
+        "title": "Alaska"
     },
     {
-        "img": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "rewari"
+        "img": "https://i.ibb.co/Cnr9h1Q/scroll-img5.jpg",
+        "title": "Caribbeany"
     },
     {
-        "img": "https://images.pexels.com/photos/457882/pexels-photo-457882.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "title": "rewari"
+        "img": "https://i.ibb.co/R6g9R8S/scroll-img6.jpg",
+        "title": "New Jersy"
+    },
+    {
+        "img": "https://i.ibb.co/2StVpQc/scroll-img7.jpg",
+        "title": "Europe"
     }
 ]

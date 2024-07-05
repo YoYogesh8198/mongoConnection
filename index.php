@@ -268,14 +268,13 @@ $num = mt_rand(100000, 999999);
             <h4 style="color: rgb(55, 101, 175);">Top Cruise Ship</h4>
             <?php
             foreach ($results['cruiseLine'] as $cruise) {
-
                 ?>
                 <div class="col-md-4 mb-3">
                     <div class="card">
                         <img src="<?php echo $cruise->ship_image; ?>" class="card-img-top" alt="...">
                         <!-- <img src="img.jpg" alt="" class="card-img-top"> -->
                         <div class="card-body">
-                            <!-- <h5 class="card-title"><?php echo $cruise->Ship_name; ?></h5> -->
+                            <!-- <h5 class="card-title"><?php //echo $cruise->Ship_name; ?></h5> -->
                             <div class="col-6" style="display: inline-block;">
                                 <img src="logo.png" alt="" style="height:50px;width:150px;">
                             </div>
@@ -347,15 +346,12 @@ $num = mt_rand(100000, 999999);
     <div class="container">
         <div class="row">
             <h4 style="color: rgb(55, 101, 175);">Find the Best Cruise for you</h4>
-            <?php
-            foreach ($results['findbest'] as $findbest) {
-                ?>
+            <?php foreach ($results['findbest'] as $findbest) { ?>
                 <div class="text-wrap ">
                     <h3><?php echo $findbest->question; ?></h3>
                     <p><?php echo $findbest->answer; ?></p>
                 </div>
-            <?php }
-            ?>
+            <?php } ?>
         </div>
     </div>
 
@@ -488,6 +484,7 @@ $num = mt_rand(100000, 999999);
         }
 
 
+
         $(document).ready(function () {
             $('#submit1').click(function (e) {
                 e.preventDefault();
@@ -504,7 +501,7 @@ $num = mt_rand(100000, 999999);
                 var ErrorMsg = false;
 
                 if (name == "" || name == null || name == undefined) {
-                    $(".error_1").addClass("invalid-feedback");
+                    $(".error_1").addClass("invalid-tooltip");
                     $(".error_1").html("Please enter your name");
                     $(".error_1").show();
                     ErrorMsg = true;
@@ -514,11 +511,11 @@ $num = mt_rand(100000, 999999);
                 }
 
                 //*Email
-                // if (email_length != 0 && emailRegex.test(email) == false) {
-                //   $(".error_2").show();
-                // } else {
-                //   $(".error_2").hide();
-                // }
+                if (email_length != 0 && emailRegex.test(email) == false) {
+                    $(".error_2").show();
+                } else {
+                    $(".error_2").hide();
+                }
 
 
                 // * phone
