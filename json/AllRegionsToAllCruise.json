@@ -1,0 +1,28 @@
+[
+    {
+        "region": "Africa",
+        "cruise": [
+            {
+                "cruisename": "Crystal Cruises"
+            },
+            {
+                "cruisename": "Holland America Line"
+            },
+            {
+                "cruisename": "Hurtigruten"
+            },
+            {
+                "cruisename": "Regent Seven Seas Cruises"
+            },
+            {
+                "cruisename": "Royal Caribbean International"
+            },
+            {
+                "cruisename": "Seabourn"
+            },
+            {
+                "cruisename": "Silversea Cruises"
+            }
+        ]
+    }
+]
