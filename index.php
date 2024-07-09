@@ -286,16 +286,16 @@ $num = mt_rand(100000, 999999);
                             </div>
                             <p class="card-text">
                             <ul style="min-height:150px">
-                                <?php foreach ($cruise->Ship_desription as $description) { ?>
+                                <?php foreach ($cruise->ship_desription as $description) { ?>
                                     <li style="font-size: 14px;">
                                         <h5><?php echo $description->title ?></h5>
-                                        <p><?php echo $description->text ?></p>
+                                        <p class="text-truncate"><?php echo $description->text ?></p>
                                     </li>
                                 <?php } ?>
                             </ul>
                             </p>
                             <a href="#" class="btn btn-primary"
-                                style="width: 100%;border-radius: 25px;font-weight: 600;"><?php echo $cruise->Ship_name; ?></a>
+                                style="width: 100%;border-radius: 25px;font-weight: 600;"><?php echo $cruise->ship_name; ?></a>
                         </div>
                     </div>
                 </div>
@@ -335,7 +335,7 @@ $num = mt_rand(100000, 999999);
                         <img src="<?php echo $bestDepartData->img; ?>" style="height: 300px;" class="card-img-top "
                             alt="...">
                         <h3 class="popular-title1"><?php echo $bestDepartData->title; ?></h3>
-                        <p class="best-text"><?php echo $bestDepartData->text; ?></p>
+                        <!-- <p class="best-text"><?php //echo $bestDepartData->text; ?></p> -->
                     </div>
                 </div>
             <?php }
