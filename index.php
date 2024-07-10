@@ -250,8 +250,8 @@ $num = mt_rand(100000, 999999);
 
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <button type="submit" class="btn btn-primary btn w-100 btnSubmit" id="submit1" name="submit1"><i
-                            class="fa-regular fa-paper-plane"></i> submit</button>
+                    <button type="button" class="btn btn-primary btn w-100 " id="" name=""><i
+                            class="fa-regular fa-paper-plane"></i> Confirm</button>
                 </div>
                 <div class="col-2"></div>
                 <div class="col-md-3">
@@ -261,7 +261,24 @@ $num = mt_rand(100000, 999999);
             </div>
         </form>
     </div>
-
+    <section class="popup">
+        <div class="popup__content">
+            <div class="close">
+                <span></span>
+                <span></span>
+            </div>
+            <p>Are you Sure</p>
+            <div class="row center">
+                <div class="col-md-5 mb-3">
+                    <button class="btn btn-primary w-100 cancel">cancel</button>
+                </div>
+                <div class="col-md-5 mb-3">
+                    <button type="submit" class="btn btn-primary  w-100 btnSubmit" id="submit1" name="submit1"><i
+                            class="fa-regular fa-paper-plane"></i> submit</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <div class="container">
         <div class="row ">
@@ -359,7 +376,15 @@ $num = mt_rand(100000, 999999);
     <!-- //*script -->
 
     <script>
-
+        $("button").click(function () {
+            $(".popup").fadeIn(500);
+        });
+        $(".close").click(function () {
+            $(".popup").fadeOut(500);
+        });
+        $(".cancel").click(function () {
+            $(".popup").fadeOut(500);
+        })
         $(document).ready(function () {
 
             // $("#cruise_menu").change(function () {
@@ -504,6 +529,7 @@ $num = mt_rand(100000, 999999);
                     $(".error_1").addClass("invalid-tooltip");
                     $(".error_1").html("Please enter your name");
                     $(".error_1").show();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else {
@@ -523,6 +549,7 @@ $num = mt_rand(100000, 999999);
                     $(".error_2").addClass("invalid-feedback");
                     $('.error_2').html("Please Fill your Mobile Number*");
                     $('.error_2').show();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else if (phone_length != 10) {
@@ -541,6 +568,7 @@ $num = mt_rand(100000, 999999);
                     $(".error_3").addClass("invalid-feedback");
                     $('.error_3').html("Please Fill your Total Passenger*");
                     $('.error_3').show();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 }
@@ -551,6 +579,7 @@ $num = mt_rand(100000, 999999);
                     $(".error_3").addClass("invalid-feedback");
                     $('.error_3').html("Error: Please choose the option below.*");
                     $('.error_3').show();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else {
@@ -562,6 +591,7 @@ $num = mt_rand(100000, 999999);
                     $(".error_4").addClass("invalid-feedback");
                     $('.error_4').html("Please Fill your Departure Date*");
                     $('.error_4').show();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else {
@@ -572,11 +602,13 @@ $num = mt_rand(100000, 999999);
                     $(".error_5").addClass("invalid-feedback");
                     $('.error_5').html("Please Fill your Return Date*");
                     $('.error_5').show();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else if (depart_date == return_date) {
                     $(".error_5").addClass("invalid-feedback");
                     $('.error_5').html("Departure Date and Return Date cannot be same*");
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 }
@@ -595,6 +627,7 @@ $num = mt_rand(100000, 999999);
                     // console.log("Filled");
                     if (depart_ports !== "") {
                         checkbox.val(checkbox.val() + ' ' + depart_ports);
+                        $(".popup").fadeOut(500);
                         console.log("Value updated: " + checkbox.val());
                     }
                 } else {
