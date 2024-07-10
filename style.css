@@ -109,3 +109,31 @@ label {
     }
   }
 }
+
+.invalid-tooltip {
+  background-color: rgba(255, 0, 0, 0.788);
+  position: absolute !important;
+  top: 108% !important;
+  z-index: 5 !important;
+  max-width: 100% !important;
+  padding: 0.75rem 0.7rem !important;
+  margin-top: 0.2rem !important;
+  color: #fff !important;
+  border-radius: var(--bs-border-radius) !important;
+  margin-left: 17px !important;
+  border-radius: 10px !important;
+  float: left !important;
+}
+
+.invalid-tooltip.top-arrow:after {
+  display: block;
+  content: " " !important;
+  position: absolute !important;
+  left: 29px;
+  right: 117px !important;
+  top: -14px !important;
+  border-top: none !important;
+  border-right: 10px solid transparent !important;
+  border-left: 10px solid transparent !important;
+  border-bottom: 15px solid rgb(255, 0, 0, 0.788) !important;
+}
