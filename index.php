@@ -511,11 +511,11 @@ $num = mt_rand(100000, 999999);
                 }
 
                 //*Email
-                if (email_length != 0 && emailRegex.test(email) == false) {
-                    $(".error_2").show();
-                } else {
-                    $(".error_2").hide();
-                }
+                // if (email_length != 0 && emailRegex.test(email) == false) {
+                //     $(".error_2").show();
+                // } else {
+                //     $(".error_2").hide();
+                // }
 
 
                 // * phone
