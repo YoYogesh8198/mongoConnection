@@ -102,7 +102,7 @@ $num = mt_rand(100000, 999999);
                     <div class="input-group has-validation">
                         <input class="w-100 form-control " id="name" type="text" name="name" placeholder="Name"
                             onkeyup="show_name(this.value);" aria-label=".form-control-lg example">
-                        <div class="error_1 invalid-tooltip top-arrow" style="display:none">
+                        <div class="error_1" style="display:none">
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@ $num = mt_rand(100000, 999999);
                 <div class="col-sm-4 mb-3">
                     <input class="w-100 form-control " id="mobile" type="tel" name="phone" placeholder="Phone"
                         aria-label=".form-control-lg example" onkeyup="checkValidateMobile(this.value)">
-                    <div class="error_2  invalid-tooltip top-arrow" style="display:none">
+                    <div class="error_2" style="display:none">
                     </div>
                 </div>
 
@@ -134,7 +134,7 @@ $num = mt_rand(100000, 999999);
                         <option>8</option>
                     </select>
                     <div class="col-md-12" id="populate_pax_opt"></div>
-                    <div class="error_3  invalid-tooltip top-arrow" style="display:none">
+                    <div class="error_3" style="display:none">
                     </div>
                 </div>
             </div>
@@ -184,7 +184,7 @@ $num = mt_rand(100000, 999999);
                     <input class="form-check-input ml-8" type="checkbox" value="" id="return_port" name="return_port">
                     <label class="form-check-label" for="return_port">
                         Return to same port
-                        <div class="error_6  invalid-tooltip top-arrow" style="display:none"></div>
+                        <div class="error_6" style="display:none"></div>
                     </label>
                 </div>
 
@@ -232,7 +232,7 @@ $num = mt_rand(100000, 999999);
                         <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Departure Date(Any)" aria-label=".form-control-lg example" id="depart_date"
                             name="depart_date" autocomplete="off" readonly>
-                        <div class="error_4  invalid-tooltip top-arrow" style="display:none"></div>
+                        <div class="error_4" style="display:none"></div>
                     </div>
                 </div>
 
@@ -241,7 +241,7 @@ $num = mt_rand(100000, 999999);
                         <input class="form-control form-control drop_in w-100" type="text"
                             placeholder="Return Date(Any)" aria-label=".form-control-lg example" id="return_date"
                             name="return_date" autocomplete="off" readonly>
-                        <div class="error_5 invalid-tooltip top-arrow" style="display:none"></div>
+                        <div class="error_5" style="display:none"></div>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@ $num = mt_rand(100000, 999999);
 
             <div class="row">
                 <div class="col-md-3 mb-3">
-                    <button type="button" class="btn btn-primary btn w-100 " id="" name=""><i
+                    <button type="button" class="btn btn-primary btn w-100 " id="confirm" name=""><i
                             class="fa-regular fa-paper-plane"></i> Confirm</button>
                 </div>
                 <div class="col-2"></div>
@@ -376,8 +376,20 @@ $num = mt_rand(100000, 999999);
     <!-- //*script -->
 
     <script>
-        $("button").click(function () {
-            $(".popup").fadeIn(500);
+        $(document).ready(function () {
+            $("#confirm").click(function () {
+                var phone_number = $("#mobile").val();
+                var total_passenger = $("#total_passenger").val();
+                var depart_date = $('#depart_date').val();
+                var return_date = $('#return_date').val();
+                var depart_ports = $('#Departure_ports').val();
+                var checkbox = $('#return_port');
+
+                // Check if all required fields are filled
+                if (phone_number && total_passenger && depart_date && return_date && depart_ports) {
+                    $(".popup").fadeIn(500); // Corrected the fadeIn time
+                }
+            });
         });
         $(".close").click(function () {
             $(".popup").fadeOut(500);
@@ -516,7 +528,7 @@ $num = mt_rand(100000, 999999);
                 e.stopPropagation();
                 var name = $("#name").val();
                 var phone_number = $("#mobile").val();
-                var phone_length = $("#mobile").length;
+                var phone_length = $("#mobile").val().length;
                 var total_passenger = $("#total_passenger").val();
                 var pax_type = $('input[name=pax_type]:checked').val()
                 var depart_date = $('#depart_date').val();
@@ -526,11 +538,10 @@ $num = mt_rand(100000, 999999);
                 var ErrorMsg = false;
 
                 if (name == "" || name == null || name == undefined) {
-                    // $(".error_1").addClass("invalid-tooltip");
+                    $(".error_1").addClass("invalid-tooltip");
                     $(".error_1").html("Please enter your name");
-                    $(".popup").fadeOut(500);
                     $(".error_1").show();
-                    $("#name").focus();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else {
@@ -547,17 +558,16 @@ $num = mt_rand(100000, 999999);
 
                 // * phone
                 if (phone_number == "" || phone_number == undefined || phone_number == null) {
-                    // $(".error_2").addClass("invalid-tooltip");
+                    $(".error_2").addClass("invalid-feedback");
                     $('.error_2').html("Please Fill your Mobile Number*");
-                    $(".popup").fadeOut(500);
                     $('.error_2').show();
+                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else if (phone_length != 10) {
-                    // $(".error_2").addClass("invalid-tooltip");
+                    $(".error_2").addClass("invalid-feedback");
                     $('.error_2').html("please enter 10 digit*");
                     $('.error_2').show();
-                    $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 }
@@ -567,7 +577,7 @@ $num = mt_rand(100000, 999999);
 
                 //* traveler
                 if (total_passenger == "" || total_passenger == null || total_passenger == undefined) {
-                    $(".error_3").addClass("invalid-tooltip");
+                    $(".error_3").addClass("invalid-feedback");
                     $('.error_3').html("Please Fill your Total Passenger*");
                     $('.error_3').show();
                     $(".popup").fadeOut(500);
@@ -578,7 +588,7 @@ $num = mt_rand(100000, 999999);
                     total_passenger !== "" && total_passenger !== null && (
                         pax_type == null || pax_type == "" || pax_type == undefined)
                 ) {
-                    $(".error_3").addClass("invalid-tooltip");
+                    $(".error_3").addClass("invalid-feedback");
                     $('.error_3').html("Error: Please choose the option below.*");
                     $('.error_3').show();
                     $(".popup").fadeOut(500);
@@ -590,7 +600,7 @@ $num = mt_rand(100000, 999999);
 
                 //* return and depart date
                 if (depart_date == "" || depart_date == null || depart_date == undefined) {
-                    $(".error_4").addClass("invalid-tooltip");
+                    $(".error_4").addClass("invalid-feedback");
                     $('.error_4').html("Please Fill your Departure Date*");
                     $('.error_4').show();
                     $(".popup").fadeOut(500);
@@ -601,14 +611,14 @@ $num = mt_rand(100000, 999999);
                 }
 
                 if (return_date == "" || return_date == null || return_date == undefined) {
-                    $(".error_5").addClass("invalid-tooltip");
+                    $(".error_5").addClass("invalid-feedback");
                     $('.error_5').html("Please Fill your Return Date*");
                     $('.error_5').show();
                     $(".popup").fadeOut(500);
                     ErrorMsg = true;
                     return false;
                 } else if (depart_date == return_date) {
-                    $(".error_5").addClass("invalid-tooltip");
+                    $(".error_5").addClass("invalid-feedback");
                     $('.error_5').html("Departure Date and Return Date cannot be same*");
                     $(".popup").fadeOut(500);
                     ErrorMsg = true;
